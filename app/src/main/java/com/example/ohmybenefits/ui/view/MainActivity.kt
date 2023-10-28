@@ -1,7 +1,8 @@
-package com.example.ohmybenefits
+package com.example.ohmybenefits.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.ohmybenefits.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OhMyBenefits</string>
+    <string name="base_url">https://localhost:8080</string>
+    <string name="api_key"></string>
 </resources>
