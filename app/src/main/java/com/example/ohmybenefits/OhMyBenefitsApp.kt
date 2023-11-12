@@ -1,4 +1,4 @@
-package com.example.ohmybenefits.ui
+package com.example.ohmybenefits
 
 import android.app.Application
 import com.example.ohmybenefits.R
@@ -10,7 +10,6 @@ class OhMyBenefitsApp: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Config.apiKey = resources.getString(R.string.api_key)
         Config.baseUrl = resources.getString(R.string.base_url)
     }
 }
