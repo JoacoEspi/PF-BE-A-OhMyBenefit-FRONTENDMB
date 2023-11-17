@@ -4,4 +4,10 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+    <style name="NavDrawerTextStyle" parent="Base.TextAppearance.AppCompat">
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
 </resources>

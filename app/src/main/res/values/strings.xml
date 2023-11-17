@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">OhMyBenefits</string>
     <string name="base_url">http://localhost:8080</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Cerrar</string>
+    <string name="Home">Home</string>
+    <string name="Perfil">Perfil</string>
+    <string name="Presupuesto">Presupuesto</string>
+    <string name="Iniciar_sesion">Iniciar Sesion</string>
+    <string name="Comentario">Comentario</string>
+    <string name="Configuracion">Configuracion</string>
+    <string name="setting_modo_oscuro"> Modo Oscuro</string>
 </resources>
