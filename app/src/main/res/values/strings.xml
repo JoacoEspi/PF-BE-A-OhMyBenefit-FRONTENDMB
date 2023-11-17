@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">OhMyBenefits</string>
-    <string name="base_url">http://localhost:8080</string>
+    <string name="base_url">http://10.0.2.2:8080</string>
 </resources>
