@@ -1,10 +1,14 @@
 package com.example.ohmybenefits.data.network.interfaces
 
+import com.example.ohmybenefits.data.model.GeolocationRequest
+import com.example.ohmybenefits.data.model.Lugar
 import com.example.ohmybenefits.data.model.ProductoDetalleModel
 import com.example.ohmybenefits.data.model.ProductoModel
 import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface ProductoApiClient {
@@ -32,4 +36,9 @@ interface ProductoApiClient {
         @Path("idProducto") idProducto: String,
         @Path("idUsuario") idUsuario: String
     ): Response<ProductoDetalleModel>
+
+    @POST("/product/geolocation")
+    suspend fun geolocation(
+        @Body request: GeolocationRequest
+        ): Response<List<Lugar>>
 }

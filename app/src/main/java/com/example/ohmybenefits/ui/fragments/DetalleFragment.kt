@@ -35,6 +35,7 @@ class DetalleFragment : Fragment(), OnItemClickListener {
         val idProducto = arguments?.getString("idProducto", "-1") ?: "-1"
         val idUsuario = arguments?.getString("idUsuario", "-1") ?: "-1"
         detalleViewModel.cargarDetalleProducto(idProducto, idUsuario)
+        val botonComercio = binding.comerciosButton
 
         detalleViewModel.detalleProducto.observe(viewLifecycleOwner, Observer { detalleProducto ->
             Log.d("DetalleFragment", "Detalle del Producto: ${detalleProducto.recomendaciones.recomms}")
@@ -52,6 +53,13 @@ class DetalleFragment : Fragment(), OnItemClickListener {
         detalleViewModel.errorMensaje.observe(viewLifecycleOwner, Observer { errorMensaje ->
             Log.e("DetalleFragment", "Error: $errorMensaje")
         })
+        botonComercio.setOnClickListener {
+            val comerciosFragment = ComerciosFragment()
+            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.contenedor_fragmento, comerciosFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
         return view;
     }
     override fun onDestroyView() {
