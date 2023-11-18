@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.ohmybenefits.ui.fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/presupuesto"
+        android:name="com.example.ohmybenefits.ui.fragments.PresupuestoFragment"
+        android:label="presupuesto_fragment"
+        tools:layout="@layout/presupuesto_fragment" />
+
+    <fragment
+        android:id="@+id/comentario"
+        android:name="com.example.ohmybenefits.ui.fragments.ComentarioFragment"
+        android:label="comentario_fragment"
+        tools:layout="@layout/comentario_fragment" />
+
+    <fragment
+        android:id="@+id/configuracion"
+        android:name="com.example.ohmybenefits.ui.fragments.ConfiguracionFragment"
+        android:label="configuracion_fragment"
+        tools:layout="@layout/configuracion_fragment" />
+
+    <fragment
+        android:id="@+id/perfil"
+        android:name="com.example.ohmybenefits.ui.fragments.PerfilFragment"
+        android:label="perfil_fragment"
+        tools:layout="@layout/perfil_fragment" />
+
+    <fragment
+        android:id="@+id/iniciarSesion"
+        android:name="com.example.ohmybenefits.ui.fragments.IniciarSesionFragment"
+        android:label="iniciar_sesion_fragment"
+        tools:layout="@layout/iniciar_sesion_fragment" />
+</navigation>
