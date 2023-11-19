@@ -2,8 +2,17 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.OhMyBenefits" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">@color/hot_pink</item>
+        <item name="colorPrimaryDark">@color/dark_hot_pink</item>
+        <item name="colorAccent">@color/green</item>
+
+
     </style>
+
+    <style name="Base.Widget.AppCompat.Button.Pink" parent="Base.Theme.OhMyBenefits">
+        <item name="buttonStyle">@drawable/hotpink_button</item>
+    </style>
+
 
     <style name="Theme.OhMyBenefits" parent="Base.Theme.OhMyBenefits" />
 </resources>

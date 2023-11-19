@@ -1,4 +1,32 @@
 <resources>
     <string name="app_name">OhMyBenefits</string>
-    <string name="base_url">http://localhost:8080</string>
+    <string name="base_url">http://10.0.2.2:8080</string>
+    <!--Login-->
+    <string name="login_tittle">Login</string>
+    <string name="forget_pass_msg"><u>He olvidado mi contraseña</u></string>
+    <string name="registry_msg"><u>¿Aun no tienes una cuenta? Registrate</u></string>
+    <!--Reset pass-->
+    <string name="reset_qpass_tittle">Seleccione su pregunta de seguridad</string>
+    <string name="reset_qpass_msg">La pregunta debe ser la que seleccionó al registrarse</string>
+    <string name="reset_apass_tittle">Ingrese su respuesta</string>
+    <string name="reset_apass_hint">Respuesta</string>
+    <string name="reset_newpass_tittle">Escriba su nueva contraseña</string>
+    <string name="reset_newpass_hint">Contraseña nueva</string>
+    <string name="reset_pass_tittle">Restablecer contraseña</string>
+    <!--Registry-->
+    <string name="registro_titulo">Registro</string>
+    <string name="registro_nombre_hint">Nombre</string>
+    <string name="registro_apellido_hint">Apellido</string>
+    <string name="registro_telefono_hint">Telefono</string>
+    <string name="registro_correo_hint">Correo Electronico</string>
+    <string name="registro_fecha_hint">Fecha de Nacimiento</string>
+    <string name="registro_pregunta_subtittle">Pregunta de Seguridad</string>
+    <string name="registro_respuesta_hint">Respuesta de Seguridad</string>
+    <string name="registro_contrasenia_hint">Contraseña</string>
+    <string name="registro_contrasenia2_hint">Repetir Contraseña</string>
+    <string name="registro_btn_name">Registrar</string>
+
+
+
+
 </resources>
