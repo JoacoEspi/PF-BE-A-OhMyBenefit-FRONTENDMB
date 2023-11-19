@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/iniciarSesion"
+            android:icon="@drawable/baseline_app_registration_24"
+            android:title="@string/Iniciar_sesion"
+            />
+        <item
+            android:id="@+id/comentario"
+            android:icon="@drawable/baseline_comment_24"
+            android:title="@string/Comentario"
+            />
+        <item
+            android:id="@+id/configuracion"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="@string/Configuracion"
+            />
+    </group>
+</menu>
