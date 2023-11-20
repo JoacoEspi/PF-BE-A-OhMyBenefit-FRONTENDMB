@@ -39,5 +39,22 @@
         android:id="@+id/iniciarSesion"
         android:name="com.example.ohmybenefits.ui.fragments.IniciarSesionFragment"
         android:label="iniciar_sesion_fragment"
-        tools:layout="@layout/iniciar_sesion_fragment" />
+        tools:layout="@layout/iniciar_sesion_fragment" >
+        <action
+            android:id="@+id/action_iniciarSesion_to_registroFragment"
+            app:destination="@id/registroFragment" />
+        <action
+            android:id="@+id/action_iniciarSesion_to_restaurarContraseniaFragment"
+            app:destination="@id/restaurarContraseniaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.RegistroFragment"
+        android:label="fragment_registro"
+        tools:layout="@layout/fragment_registro" />
+    <fragment
+        android:id="@+id/restaurarContraseniaFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.RestaurarContraseniaFragment"
+        android:label="fragment_restaurar_contrasenia"
+        tools:layout="@layout/fragment_restaurar_contrasenia" />
 </navigation>
