@@ -2,18 +2,46 @@ package com.example.ohmybenefits.data.network.services
 
 import com.example.ohmybenefits.data.model.ProductoModel
 import com.example.ohmybenefits.data.network.interfaces.ProductoApiClient
-import com.example.ohmybenefits.domain.model.Producto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+class ProductoService @Inject constructor(
+    private val api: ProductoApiClient
+) {
 
-class ProductoService @Inject constructor(private val service: ProductoApiClient) {
+    suspend fun buscarProductoPorId(id: String): ProductoModel {
+        return withContext(Dispatchers.IO) {
+            val response = api.buscarProductoPorId(id)
+            response.body()!!
+        }
+    }
 
-    suspend fun buscarProductoPorId(id: String): ProductoModel{
-            return withContext(Dispatchers.IO){
-                val response = service.getProductById(id)
-                response.body()!!
-            }
+    suspend fun buscarProductoPorNombre(nombre: String): ProductoModel {
+        return withContext(Dispatchers.IO) {
+            val response = api.buscarProductoPorNombre(nombre)
+            response.body()!!
+        }
+    }
+
+    suspend fun buscarPalabra(palabra: String): ProductoModel {
+        return withContext(Dispatchers.IO) {
+            val response = api.buscarProductoPorNombre(palabra)
+            response.body()!!
+        }
+    }
+
+    suspend fun listarProductos(page: Int, perPage: Int): List<ProductoModel> {
+        return withContext(Dispatchers.IO) {
+            val response = api.listarProductos(page, perPage)
+            response.body()?.docs ?: emptyList()
+        }
+    }
+
+    suspend fun listarProductosPorCategoria(categoria: String): List<ProductoModel> {
+        return withContext(Dispatchers.IO) {
+            val response = api.listarProductosPorCategoria(categoria)
+            response.body() ?: emptyList()
+        }
     }
 }

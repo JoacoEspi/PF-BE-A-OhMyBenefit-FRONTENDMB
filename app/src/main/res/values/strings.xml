@@ -10,4 +10,6 @@
     <string name="Comentario">Comentario</string>
     <string name="Configuracion">Configuracion</string>
     <string name="setting_modo_oscuro"> Modo Oscuro</string>
+    <string name="agregar">Add</string>
+    <string name="detalle">Detail</string>
 </resources>

@@ -17,4 +17,18 @@
         <item name="itemTextColor">@color/black</item>
     </style>
 
+    <style name="Widget.Button.Toggle" parent="android:Widget">
+        <item name="android:background">@drawable/ic_toggle_bg</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+    </style>
+    <style name="toggleButton" parent="android:Theme.Black">
+        <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+    </style>
+    <style name="SearchStyle">
+        <item name="android:editTextColor">@color/turquoise</item>
+        <item name="android:textColorHint">#424242</item>
+        <item name="android:fontFamily">sans-serif-condensed-light</item>
+    </style>
 </resources>

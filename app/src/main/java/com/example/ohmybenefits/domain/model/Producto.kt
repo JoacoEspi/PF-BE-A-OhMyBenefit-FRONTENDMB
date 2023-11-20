@@ -8,16 +8,17 @@ data class Producto(
     val nombre: String,
     val precio: String,
     val categorias: ArrayList<String>,
-    val imagenUrl: String,
+    val imageUrl: String,
     val idComercio: String
 )
 
 
- fun ProductoModel.toDomain() = Producto(
-     _id,
+fun ProductoModel.toDomain() = Producto(
+    _id,
     codigo,
     nombre,
     precio,
     categorias,
-    imagenUrl,
-    idComercio)
+    imageUrl,
+    idComercio
+)

@@ -87,6 +87,10 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
+    //Paginado
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-common-ktx:3.1.1")
+
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 

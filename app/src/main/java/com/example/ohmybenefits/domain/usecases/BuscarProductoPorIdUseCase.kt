@@ -5,10 +5,10 @@ import com.example.ohmybenefits.domain.model.Producto
 import javax.inject.Inject
 
 class BuscarProductoPorIdUseCase @Inject constructor(
-    private val prdoRepository : ProductoRepository
+    private val productoRepository : ProductoRepository
 ) {
     suspend operator fun invoke(id: String): Producto {
-        val producto = prdoRepository.buscarProductoPorId(id)
+        val producto = productoRepository.buscarProductoPorId(id)
 
         return producto
     }
