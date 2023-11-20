@@ -1,16 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ComerciosFragment">
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- Obtener ubicación -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Obtener ubicación"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Utilice la ubicación de su dispositivo"
+        android:textSize="14sp"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btnObtenerUbicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Obtener ubicación"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Línea de separación -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Ingrese una dirección -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="O ingrese una dirección para utilizar en la búsqueda"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/edtDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese la dirección"/>
+
+    <Button
+        android:id="@+id/btnEnviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        android:layout_marginTop="16dp"/>
+
+    <!-- RecyclerView para mostrar comercios -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewComercio"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipToPadding="false"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"/>
-
-</FrameLayout>
+        android:paddingBottom="8dp"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
