@@ -6,4 +6,15 @@
     </style>
 
     <style name="Theme.OhMyBenefits" parent="Base.Theme.OhMyBenefits" />
+
+    <style name="NavDrawerTextStyle" parent="Base.TextAppearance.AppCompat">
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/menu_color</item>
+        <item name="itemTextColor">@color/black</item>
+    </style>
+
 </resources>

@@ -4,29 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.MainActivity">
+    tools:context=".ui.view.MainActivity"
+    tools:openDrawer="start">
 
-    <!-- Botón para inflar el fragmento -->
-    <Button
-        android:id="@+id/btnMostrarDetalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mostrar Detalle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:onClick="onMostrarDetalleClick" />
-
-    <!-- Contenedor para el fragmento -->
-    <FrameLayout
-        android:id="@+id/contenedor_fragmento"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/btnMostrarDetalle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-    </FrameLayout>
+        android:layout_height="match_parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/container_main"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="?attr/actionBarSize"
+       android:orientation="vertical">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/navgraph" />
+
+       <com.google.android.material.bottomnavigation.BottomNavigationView
+           android:id="@+id/bottom_bar"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:itemTextAppearance="@style/NavDrawerTextStyle"
+           app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+           app:itemHorizontalTranslationEnabled="false"
+           app:itemIconSize="24dp"
+           app:itemIconTint="@color/turquoise"
+           app:itemTextColor="@color/black"
+           app:labelVisibilityMode="labeled"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.0"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/nav_host"
+           app:menu="@menu/botton_bar" />
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/drawer_menu"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/turquoise">
+
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
