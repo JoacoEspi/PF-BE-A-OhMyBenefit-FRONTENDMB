@@ -1,6 +1,5 @@
 package com.example.ohmybenefits.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,8 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
-import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
 import com.example.ohmybenefits.core.SharedPreferences
@@ -21,17 +18,9 @@ import com.example.ohmybenefits.ui.fragments.DetalleFragment
 import com.squareup.picasso.Picasso
 
 class ProductoAdapter(private val context: Context) :
-    PagingDataAdapter<ProductoModel, ProductoAdapter.ProductoViewHolder>(PRODUCTO_COMPARATOR) {
+    RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
-    private var listaProductos: ArrayList<ProductoModel> = ArrayList()
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun setListaProducto(listaProducto: List<ProductoModel>) {
-        this.listaProductos.clear()
-        this.listaProductos.addAll(listaProducto)
-        notifyDataSetChanged()
-    }
-
+    var productList: List<ProductoModel> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_producto, parent, false)
@@ -39,12 +28,17 @@ class ProductoAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
-        val producto = listaProductos[position]
+        val producto = productList[position]
         holder.bind(producto)
     }
 
     override fun getItemCount(): Int {
-        return listaProductos.size
+        return productList.size
+    }
+
+    fun submitList(newList: List<ProductoModel>) {
+        productList = newList
+        notifyDataSetChanged()
     }
 
     inner class ProductoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -58,7 +52,7 @@ class ProductoAdapter(private val context: Context) :
         fun bind(producto: ProductoModel) {
             val prefs = SharedPreferences(context)
             val isFav = prefs.isFavoriteProduct(producto._id)
-            val precioSigno = "$"+producto.precio
+            val precioSigno = "$" + producto.precio
             categoria.text = producto.categorias[0]
             nombre.text = producto.nombre
             precio.text = precioSigno
@@ -68,8 +62,8 @@ class ProductoAdapter(private val context: Context) :
 
             prodFavoriteToggle.background = ContextCompat.getDrawable(
                 context,
-                R.drawable.ic_toggle_bg
-            );
+                if (isFav) R.drawable.ic_toggle_bg else R.drawable.ic_toggle
+            )
             prodFavoriteToggle.isChecked = isFav
 
             prodFavoriteToggle.setOnCheckedChangeListener { _, isChecked ->
@@ -97,14 +91,4 @@ class ProductoAdapter(private val context: Context) :
             }
         }
     }
-
-    companion object {
-        private val PRODUCTO_COMPARATOR = object : DiffUtil.ItemCallback<ProductoModel>() {
-            override fun areItemsTheSame(oldItem: ProductoModel, newItem: ProductoModel) =
-                oldItem._id == newItem._id
-
-            override fun areContentsTheSame(oldItem: ProductoModel, newItem: ProductoModel) =
-                oldItem == newItem
-        }
-    }
-    }
+}

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
 import com.example.ohmybenefits.adapters.ProductoAdapter
 import com.example.ohmybenefits.data.network.services.ProductoService
+import com.example.ohmybenefits.ui.viewmodel.ProductoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,6 +25,7 @@ class HomeFragment : Fragment() {
     lateinit var productoService: ProductoService
     private lateinit var productoAdapter: ProductoAdapter
     private lateinit var productoRecyclerView: RecyclerView
+    private val productoViewModel: ProductoViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,8 +51,24 @@ class HomeFragment : Fragment() {
         productoRecyclerView.adapter = productoAdapter
 
         lifecycleScope.launch {
-            val productos = productoService.listarProductos(1, 20)
-            productoAdapter.setListaProducto(productos)
+            productoViewModel.loadNextPage()
         }
+
+        productoViewModel.productList.observe(viewLifecycleOwner) {
+            productoAdapter.submitList(it)
+        }
+
+        productoRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
+                val totalItemCount = layoutManager.itemCount
+
+                if (lastVisibleItemPosition == totalItemCount - 1) {
+                    productoViewModel.loadNextPage()
+                }
+            }
+        })
     }
 }

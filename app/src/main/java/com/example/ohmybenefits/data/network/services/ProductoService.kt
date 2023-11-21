@@ -1,5 +1,6 @@
 package com.example.ohmybenefits.data.network.services
 
+import com.example.ohmybenefits.data.model.ProductoApiResponse
 import com.example.ohmybenefits.data.model.ProductoModel
 import com.example.ohmybenefits.data.network.interfaces.ProductoApiClient
 import kotlinx.coroutines.Dispatchers
@@ -31,11 +32,8 @@ class ProductoService @Inject constructor(
         }
     }
 
-    suspend fun listarProductos(page: Int, perPage: Int): List<ProductoModel> {
-        return withContext(Dispatchers.IO) {
-            val response = api.listarProductos(page, perPage)
-            response.body()?.docs ?: emptyList()
-        }
+    suspend fun listarProductos(page: Int, perPage: Int): ProductoApiResponse {
+        return api.listarProductos(page, perPage)
     }
 
     suspend fun listarProductosPorCategoria(categoria: String): List<ProductoModel> {

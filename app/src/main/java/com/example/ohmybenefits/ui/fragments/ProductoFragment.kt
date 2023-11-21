@@ -28,7 +28,7 @@ class ProductoFragment : Fragment() {
     ): View {
         Log.d("ProductoFragment", "onCreateView")
 
-        productoViewModel.onCreate()
+        productoViewModel.loadNextPage()
         productoAdapter = ProductoAdapter(requireContext())
 
         return inflater.inflate(R.layout.producto_fragment, container, false)
@@ -42,8 +42,8 @@ class ProductoFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = productoAdapter
 
-        productoViewModel.listaProducto.observe(viewLifecycleOwner) {
-            productoAdapter.setListaProducto(it)
+        productoViewModel.productList.observe(viewLifecycleOwner) {
+            productoAdapter.submitList(it)
         }
 
         productoViewModel.isLoading.observe(viewLifecycleOwner, Observer {

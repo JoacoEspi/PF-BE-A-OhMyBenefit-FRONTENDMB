@@ -7,23 +7,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ohmybenefits.data.model.ProductoModel
 import com.example.ohmybenefits.data.network.services.ProductoService
-import com.example.ohmybenefits.domain.model.Producto
-import com.example.ohmybenefits.domain.usecases.BuscarProductoPorIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductoViewModel @Inject constructor(
-    private val productoService: ProductoService
-) : ViewModel() {
-
-    private val _listaProducto = MutableLiveData<List<ProductoModel>>()
-    val listaProducto: LiveData<List<ProductoModel>> = _listaProducto
-
-    fun setListaProducto(listaProducto: List<ProductoModel>) {
-        _listaProducto.value = listaProducto
-    }
+class ProductoViewModel @Inject constructor(private val productService: ProductoService) :
+    ViewModel() {
+    private val _productList = MutableLiveData<List<ProductoModel>>()
+    val productList: LiveData<List<ProductoModel>> get() = _productList
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -32,23 +24,34 @@ class ProductoViewModel @Inject constructor(
         _isLoading.value = isLoading
     }
 
-    fun onCreate() {
+    fun setListaProducto(listaProducto: List<ProductoModel>) {
+        _productList.value = listaProducto
+    }
+
+    private var currentPage = 1
+
+    fun loadNextPage() {
         viewModelScope.launch {
             setIsLoading(true)
             try {
-                val response = productoService.listarProductos(5,5)
-                Log.d("ProductoViewModel", "Lista de productos: $response")
-                if (response != null) {
-                    setListaProducto(response)
-                }
+                val productList = productService.listarProductos(currentPage, PER_PAGE)
+                Log.d("ProductoViewModel", "Product list: $productList")
+                setListaProducto((_productList.value ?: emptyList()) + productList.docs)
+                currentPage++
             } catch (e: Exception) {
                 Log.e("ProductoViewModel", "Error: ${e.message}")
+            } finally {
+                setIsLoading(false)
             }
-            setIsLoading(false)
         }
     }
 
+    companion object {
+        const val PER_PAGE = 10
+    }
+
     fun clear() {
-        _listaProducto.value = emptyList()
+        _productList.value = emptyList()
+        currentPage = 1
     }
 }

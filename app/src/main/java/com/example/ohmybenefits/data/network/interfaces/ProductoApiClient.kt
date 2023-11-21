@@ -1,6 +1,6 @@
 package com.example.ohmybenefits.data.network.interfaces
 
-import com.example.ohmybenefits.data.model.ListarProductosApiResponseModel
+import com.example.ohmybenefits.data.model.ProductoApiResponse
 import com.example.ohmybenefits.data.model.ProductoModel
 import retrofit2.Response
 import retrofit2.http.DELETE
@@ -14,7 +14,7 @@ interface ProductoApiClient {
     suspend fun listarProductos(
         @Query("page") page: Int,
         @Query("perPage") perPage: Int
-    ): Response<ListarProductosApiResponseModel>
+    ): ProductoApiResponse
 
     @GET("product/{id}")
     suspend fun buscarProductoPorId(
