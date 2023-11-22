@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso
 class RecomendedProductAdapter(
     private val productoDetalleModel: ProductoDetalleModel,
     private val itemClickListener: OnItemClickListener,
-    private val fragmentManager: FragmentManager
 ) : RecyclerView.Adapter<RecomendedProductAdapter.ProductoRecomendadoViewHolder>() {
 
     inner class ProductoRecomendadoViewHolder(private val binding: ItemProductoRecomendadoBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
@@ -32,7 +31,6 @@ class RecomendedProductAdapter(
         }
 
         fun bind(recomendacion: Recomendacion) {
-            // Usar binding para establecer valores en las vistas
             val recomendacionValues = recomendacion.values
             binding.textNombreProductoRecomendado.text = recomendacionValues.nombre
             binding.textPrecioProductoRecomendado.text = "Precio: ${recomendacionValues.precio}"

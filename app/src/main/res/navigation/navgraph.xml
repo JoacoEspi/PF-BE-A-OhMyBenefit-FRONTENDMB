@@ -9,7 +9,11 @@
         android:id="@+id/home"
         android:name="com.example.ohmybenefits.ui.fragments.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_home_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/presupuesto"
@@ -40,4 +44,27 @@
         android:name="com.example.ohmybenefits.ui.fragments.IniciarSesionFragment"
         android:label="iniciar_sesion_fragment"
         tools:layout="@layout/iniciar_sesion_fragment" />
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.DetalleFragment"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" >
+        <action
+            android:id="@+id/action_detalleFragment_to_comerciosFragment"
+            app:destination="@id/comerciosFragment" />
+        <action
+            android:id="@+id/action_detalleFragment_self"
+            app:destination="@id/detalleFragment"
+            app:popUpTo="@id/detalleFragment"
+            app:popUpToInclusive="true" />
+        <argument android:name="producto"
+            app:argType="string" />
+        <argument
+            android:name="usuario"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/comerciosFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.ComerciosFragment"
+        android:label="ComerciosFragment" />
 </navigation>

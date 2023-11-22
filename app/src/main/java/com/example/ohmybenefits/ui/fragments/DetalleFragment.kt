@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
@@ -30,13 +32,13 @@ class DetalleFragment : Fragment(), OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDetalleBinding.inflate(inflater, container, false)
+
         val view = binding.root
         detalleViewModel = ViewModelProvider(this).get(DetalleViewModel::class.java)
-        val idProducto = arguments?.getString("idProducto", "-1") ?: "-1"
-        val idUsuario = arguments?.getString("idUsuario", "-1") ?: "-1"
+        val idProducto = DetalleFragmentArgs.fromBundle(requireArguments()).producto
+        val idUsuario = DetalleFragmentArgs.fromBundle((requireArguments())).usuario
         detalleViewModel.cargarDetalleProducto(idProducto, idUsuario)
         val botonComercio = binding.comerciosButton
-
         detalleViewModel.detalleProducto.observe(viewLifecycleOwner, Observer { detalleProducto ->
             Log.d("DetalleFragment", "Detalle del Producto: ${detalleProducto.recomendaciones.recomms}")
             binding.textNombreProducto.text = detalleProducto.producto.nombre
@@ -47,18 +49,15 @@ class DetalleFragment : Fragment(), OnItemClickListener {
 
             val recyclerViewRecomendados: RecyclerView = view.findViewById(R.id.recyclerViewRecomendados)
             recyclerViewRecomendados.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = RecomendedProductAdapter(detalleProducto, this, requireFragmentManager())
+            val adapter = RecomendedProductAdapter(detalleProducto, this)
             recyclerViewRecomendados.adapter = adapter
         })
         detalleViewModel.errorMensaje.observe(viewLifecycleOwner, Observer { errorMensaje ->
             Log.e("DetalleFragment", "Error: $errorMensaje")
         })
         botonComercio.setOnClickListener {
-            val comerciosFragment = ComerciosFragment()
-            val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.contenedor_fragmento, comerciosFragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            val navController = binding.root.findNavController()
+            navController.navigate(DetalleFragmentDirections.actionDetalleFragmentToComerciosFragment())
         }
         return view;
     }
@@ -66,21 +65,10 @@ class DetalleFragment : Fragment(), OnItemClickListener {
         super.onDestroyView()
         _binding = null
     }
-    // Implementa la función onItemClick de la interfaz
     override fun onItemClick(recomendacion: Recomendacion) {
-        // Aquí manejas el clic del usuario en el producto recomendado
-        // Puedes, por ejemplo, iniciar una nueva transacción de fragmento para mostrar los detalles del producto recomendado
+        val navController = binding.root.findNavController()
         val idProductoRecomendado = recomendacion.id
-        val nuevoFragmento = DetalleFragment().apply {
-            arguments = Bundle().apply {
-                putString("idProducto", idProductoRecomendado)
-                putString("idUsuario", idUsuarioHardCodeado) // Asegúrate de tener el idUsuario disponible
-            }
-        }
-
-        val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.contenedor_fragmento, nuevoFragmento)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.commit()
+        val direccion = DetalleFragmentDirections.actionDetalleFragmentSelf(idProductoRecomendado, idUsuarioHardCodeado)
+        navController.navigate(direccion)
     }
 }

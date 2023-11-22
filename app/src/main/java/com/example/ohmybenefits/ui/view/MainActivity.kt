@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.ohmybenefits.R
-import com.example.ohmybenefits.data.repositories.ProductoRepository
-import com.example.ohmybenefits.ui.fragments.DetalleFragment
 import com.example.ohmybenefits.ui.viewmodel.ProductoViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
