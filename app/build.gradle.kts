@@ -1,10 +1,10 @@
 plugins {
-    //kotlin("kapt")
-    id("org.jetbrains.kotlin.kapt")
-    id("com.google.devtools.ksp")
+    kotlin("kapt")
+    //id("com.google.devtools.ksp")
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -88,6 +88,10 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //Paginado
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-common-ktx:3.1.1")
 
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
