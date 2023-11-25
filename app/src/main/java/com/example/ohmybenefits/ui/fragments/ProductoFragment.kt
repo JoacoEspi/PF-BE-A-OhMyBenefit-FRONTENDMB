@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
@@ -28,8 +29,8 @@ class ProductoFragment : Fragment() {
     ): View {
         Log.d("ProductoFragment", "onCreateView")
 
-        productoViewModel.loadNextPage()
-        productoAdapter = ProductoAdapter(requireContext())
+        productoViewModel.listarProductos()
+        productoAdapter = ProductoAdapter(requireContext(), findNavController())
 
         return inflater.inflate(R.layout.producto_fragment, container, false)
     }

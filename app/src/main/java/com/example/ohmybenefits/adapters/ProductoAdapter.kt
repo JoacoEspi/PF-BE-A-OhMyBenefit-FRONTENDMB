@@ -1,7 +1,6 @@
 package com.example.ohmybenefits.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,17 +9,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
 import com.example.ohmybenefits.core.SharedPreferences
 import com.example.ohmybenefits.data.model.ProductoModel
-import com.example.ohmybenefits.ui.fragments.DetalleFragment
+import com.example.ohmybenefits.ui.fragments.HomeFragmentDirections
 import com.squareup.picasso.Picasso
 
-class ProductoAdapter(private val context: Context) :
-    RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
+class ProductoAdapter(
+    private val context: Context,
+    private val navController: NavController
+) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
     var productList: List<ProductoModel> = emptyList()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_producto, parent, false)
@@ -83,11 +86,10 @@ class ProductoAdapter(private val context: Context) :
                     )
                 }
             }
-
             detalle.setOnClickListener {
-                val intent = Intent(context, DetalleFragment::class.java)
-                intent.putExtra("idProduct", producto._id)
-                context.startActivity(intent)
+                val action = HomeFragmentDirections.actionHomeToDetalle()
+                navController.navigate(action)
+                //navController.navigate(R.id.action_home_to_detalle)
             }
         }
     }

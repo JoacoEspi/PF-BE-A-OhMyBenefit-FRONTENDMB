@@ -16,25 +16,27 @@ interface ProductoApiClient {
         @Query("perPage") perPage: Int
     ): ProductoApiResponse
 
-    @GET("product/{id}")
-    suspend fun buscarProductoPorId(
-        @Path("id") id: String
-    ): Response<ProductoModel>
-
     @GET("/product/list-all/{category}")
     suspend fun listarProductosPorCategoria(
-        @Path("category") category: String
-    ): Response<List<ProductoModel>>
-
-    @GET("/product/search-name/{name}")
-    suspend fun buscarProductoPorNombre(
-        @Path("name") name: String
-    ): Response<ProductoModel>
+        @Path("category") category: String,
+        @Query("page") page: Int,
+        @Query("perPage") perPage: Int
+    ): ProductoApiResponse
 
     @GET("/product/search/{word}")
     suspend fun buscarPalabra(
         @Path("word") word: String
     ): Response<List<ProductoModel>>
+
+    @GET("product/{id}")
+    suspend fun buscarProductoPorId(
+        @Path("id") id: String
+    ): Response<ProductoModel>
+
+    @GET("/product/search-name/{name}")
+    suspend fun buscarProductoPorNombre(
+        @Path("name") name: String
+    ): Response<ProductoModel>
 
     @DELETE("/product/{id}")
     suspend fun borrarProductoPorId(

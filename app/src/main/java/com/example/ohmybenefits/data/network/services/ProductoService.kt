@@ -25,9 +25,9 @@ class ProductoService @Inject constructor(
         }
     }
 
-    suspend fun buscarPalabra(palabra: String): ProductoModel {
+    suspend fun buscarPalabra(palabra: String): List<ProductoModel> {
         return withContext(Dispatchers.IO) {
-            val response = api.buscarProductoPorNombre(palabra)
+            val response = api.buscarPalabra(palabra)
             response.body()!!
         }
     }
@@ -36,10 +36,10 @@ class ProductoService @Inject constructor(
         return api.listarProductos(page, perPage)
     }
 
-    suspend fun listarProductosPorCategoria(categoria: String): List<ProductoModel> {
+    suspend fun listarProductosPorCategoria(categoria: String, page: Int, perPage: Int): List<ProductoModel> {
         return withContext(Dispatchers.IO) {
-            val response = api.listarProductosPorCategoria(categoria)
-            response.body() ?: emptyList()
+            val response = api.listarProductosPorCategoria(categoria, page, perPage)
+            response.docs ?: emptyList()
         }
     }
 }

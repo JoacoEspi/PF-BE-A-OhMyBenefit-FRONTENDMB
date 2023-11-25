@@ -9,7 +9,17 @@
         android:id="@+id/home"
         android:name="com.example.ohmybenefits.ui.fragments.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_home_to_detalle"
+            app:destination="@id/detalle" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalle"
+        android:name="com.example.ohmybenefits.ui.fragments.DetalleFragment"
+        android:label="detalle_fragment"
+        tools:layout="@layout/detalle_fragment" />
 
     <fragment
         android:id="@+id/presupuesto"

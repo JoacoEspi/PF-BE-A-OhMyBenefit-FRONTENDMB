@@ -14,8 +14,14 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductoViewModel @Inject constructor(private val productService: ProductoService) :
     ViewModel() {
+
     private val _productList = MutableLiveData<List<ProductoModel>>()
+    private val _productSearchList = MutableLiveData<List<ProductoModel>>()
+    private val _productByCategoryList = MutableLiveData<List<ProductoModel>>()
+
     val productList: LiveData<List<ProductoModel>> get() = _productList
+    val productSearchList: LiveData<List<ProductoModel>> get() = _productSearchList
+    val productByCategoryList: LiveData<List<ProductoModel>> get() = _productByCategoryList
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -28,9 +34,17 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
         _productList.value = listaProducto
     }
 
+    fun setListaProductoBuscado(lista: List<ProductoModel>) {
+        _productSearchList.value = lista
+    }
+
+    fun setListaProductoBuscadoPorCategoria(lista: List<ProductoModel>) {
+        _productByCategoryList.value = lista
+    }
+
     private var currentPage = 1
 
-    fun loadNextPage() {
+    fun listarProductos() {
         viewModelScope.launch {
             setIsLoading(true)
             try {
@@ -46,12 +60,55 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
         }
     }
 
+    fun listarProductosPorCategoria(categoria: String) {
+        clearCategoryProducts()
+        viewModelScope.launch {
+            setIsLoading(true)
+            try {
+                val productList = productService.listarProductosPorCategoria(categoria, currentPage, PER_PAGE)
+                Log.d("ProductoViewModel", "Product list by category: $productList")
+                setListaProductoBuscadoPorCategoria((_productByCategoryList.value ?: emptyList()) + productList)
+                currentPage++
+            } catch (e: Exception) {
+                Log.e("ProductoViewModel", "Error: ${e.message}")
+            } finally {
+                setIsLoading(false)
+            }
+        }
+    }
+
+    fun buscarPalabra(palabra: String) {
+        clearSearchProducts()
+        viewModelScope.launch {
+            setIsLoading(true)
+            try {
+                val productList = productService.buscarPalabra(palabra)
+                Log.d("ProductoViewModel", "Search products: $productList")
+                setListaProductoBuscado((_productSearchList.value ?: emptyList()) + productList)
+            } catch (e: Exception) {
+                Log.e("ProductoViewModel", "Error: ${e.message}")
+            } finally {
+                setIsLoading(false)
+            }
+        }
+    }
+
     companion object {
-        const val PER_PAGE = 10
+        const val PER_PAGE = 5
     }
 
     fun clear() {
         _productList.value = emptyList()
+        _productSearchList.value = emptyList()
+        _productByCategoryList.value = emptyList()
         currentPage = 1
+    }
+
+    fun clearSearchProducts() {
+        _productSearchList.value = emptyList()
+    }
+
+    fun clearCategoryProducts() {
+        _productByCategoryList.value = emptyList()
     }
 }

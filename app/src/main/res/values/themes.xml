@@ -26,9 +26,9 @@
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>
     </style>
-    <style name="SearchStyle">
+    <style name="SearchStyle" parent="Widget.AppCompat.SearchView">
         <item name="android:editTextColor">@color/turquoise</item>
-        <item name="android:textColorHint">#424242</item>
         <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>
