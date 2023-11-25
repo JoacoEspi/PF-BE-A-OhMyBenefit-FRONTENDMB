@@ -6,4 +6,5 @@
     <color name="gray">#ADA8A8</color>
     <color name="pink">#E1386E</color>
     <color name="turquoise">#01AC93</color>
+    <color name="transparent_white">#00FFFFFF</color>
 </resources>

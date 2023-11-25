@@ -11,69 +11,91 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@color/white"
+            android:elevation="4dp">
         <ImageView
             android:id="@+id/imageProducto"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_launcher_foreground" />
-
-        <TextView
-            android:id="@+id/headerNombreProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Producto"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/textNombreProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="Nombre del Producto"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/headerPrecioProducto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Precio"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp" />
 
         <TextView
             android:id="@+id/textPrecioProducto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
             android:text="Precio: $0.00"
             android:textSize="16sp" />
     </LinearLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewRecomendaciones"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearDetallesProducto"
-        android:layout_marginTop="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="45dp"
         android:layout_marginHorizontal="16dp"
-        app:cardCornerRadius="8dp">
+        android:id="@+id/recyclerViewRecomendados"
+        android:layout_width="match_parent"
+        android:layout_below="@id/linearDetallesProducto"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewRecomendados"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-    </androidx.cardview.widget.CardView>
-
-    <Button
-        android:id="@+id/comerciosButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cardViewRecomendaciones"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Comercios" />
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/recyclerViewRecomendados"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editCantidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/turquoise"
+            android:textStyle="bold"
+            android:layout_marginRight="16dp"
+            android:hint="Cantidad"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/presupuestoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/turquoise"
+            android:textStyle="bold"
+            android:text="Agregar" />
+
+        <Button
+            android:id="@+id/comerciosButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/turquoise"
+            android:textStyle="bold"
+            android:text="Comercios"/>
+    </LinearLayout>
+
 </RelativeLayout>

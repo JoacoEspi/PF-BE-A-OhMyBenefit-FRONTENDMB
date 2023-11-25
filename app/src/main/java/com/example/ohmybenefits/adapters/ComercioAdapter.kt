@@ -23,7 +23,7 @@ class ComercioAdapter(private val comercios: List<Lugar>) : RecyclerView.Adapter
         val comercio = comercios[position]
         holder.nombreTextView.text = comercio.nombre
         holder.direccionTextView.text = comercio.direccion
-        holder.distanciaTextView.text = comercio.distancia.toString()
+        holder.distanciaTextView.text = "Distancia: " + String.format("%.2f",comercio.distancia) + " km"
     }
 
     override fun getItemCount(): Int {
