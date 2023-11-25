@@ -1,16 +1,27 @@
 package com.example.ohmybenefits.data.model
 
-import com.google.gson.annotations.SerializedName
-
-
 data class UsuarioModel(
-    @SerializedName("_id") val _id: String,
-    @SerializedName("mail") val mail: String,
-    @SerializedName("apellido") val apellido: String,
-    @SerializedName("telefono") val telefono: String,
-    @SerializedName("fechaNacimiento") val fechaNacimiento: String,
-    @SerializedName("contrasenia") val contrasenia: String,
-    @SerializedName("presupuesto") val presupuesto: Array<Any?>,
-    @SerializedName("seguridad") val seguridad: Any,
-    @SerializedName("rol") val rol: String
+    val nombre: String?,
+    val apellido: String?,
+    val telefono: String?,
+    val mail: String,
+    val fechaNacimiento: String?,
+    val contrasenia: String,
+    val seguridad: Seguridad?
+
 )
+
+data class Seguridad(
+    val pregunta: String,
+    val respuesta: String
+)
+
+
+data class ResetContrasenia(
+    val mail: String,
+    val nuevaContrasenia: String,
+    val seguridad: Seguridad
+)
+
+
+

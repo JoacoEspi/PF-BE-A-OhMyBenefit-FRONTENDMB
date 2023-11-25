@@ -4,7 +4,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs.kotlin")
+    id ("androidx.navigation.safeargs.kotlin")
+   // id("org.jetbrains.kotlin.jvm")
 }
 
 android {
@@ -53,6 +54,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //para inicializar shared preferences
+    //implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
+    //implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
+
     // Fragment
     implementation("androidx.fragment:fragment-ktx:1.5.7")
 
@@ -88,6 +93,10 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //Paginado
+    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-common-ktx:3.1.1")
 
     //LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")

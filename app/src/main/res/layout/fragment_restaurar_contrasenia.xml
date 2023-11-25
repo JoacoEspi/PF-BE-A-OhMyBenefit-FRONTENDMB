@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollViewRestaurar"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        tools:context=".ui.fragments.RestaurarContraseniaFragment">
+
+            <TextView
+                android:layout_width="296dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/reset_pass_tittle"
+                android:textAlignment="center"
+                android:textColor="@color/pink"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="88dp"
+                android:text="Ingresa tu email"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.098"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/reset_pass_email_input"
+                style="@style/round_pink_edit_text"
+                android:layout_width="332dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="120dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/pink"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="383dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="184dp"
+                android:text="@string/reset_qpass_tittle"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="216dp"
+                android:text="@string/reset_qpass_msg"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinnerQuestions"
+                style="@style/round_pink_edit_text"
+                android:layout_width="332dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="248dp"
+                android:hint="Elije tu pregunta"
+                android:textColorHint="@color/pink"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="312dp"
+                android:text="@string/reset_apass_tittle"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/reset_pass_ans_input"
+                style="@style/round_pink_edit_text"
+                android:layout_width="332dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="348dp"
+                android:hint="@string/reset_apass_hint"
+                android:inputType="text"
+                android:textColorHint="@color/pink"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="412dp"
+                android:text="@string/reset_newpass_tittle"
+                android:textColor="@color/green"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="332dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="440dp"
+                android:hint="@string/reset_newpass_hint"
+                android:scrollbarSize="25dp"
+                android:textColorHint="@color/pink"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/dark_hot_pink">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/reset_new_pass_input"
+                        style="@style/round_pink_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ems="15"
+                        android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="36dp" />
+
+            <Button
+                android:id="@+id/reset_pass_button"
+                android:layout_width="343dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="52dp"
+                android:background="@drawable/hotpink_button"
+                android:elevation="20dp"
+                android:text="Restablecer contraseña"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

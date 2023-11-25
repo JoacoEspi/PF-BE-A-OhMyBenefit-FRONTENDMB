@@ -39,9 +39,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideUsuarioApiClient(retrofit: Retrofit): UsuarioApiClient {
+    fun provideUsuarioApiClient(retrofit: Retrofit): UsuarioApiClient{
         return retrofit.create(UsuarioApiClient::class.java)
     }
-
-
 }
