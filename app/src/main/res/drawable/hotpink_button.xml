@@ -7,13 +7,13 @@
             <corners android:radius="20dp"/>
         </shape>
     </item>-->
-   <!-- <item android:state_pressed="true">
+  <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <solid android:color="@color/green"/>
         </shape>
 
-    </item>-->
+    </item>
     <!-- button -->
-            <solid android:color="@color/hot_pink" />
+            <solid android:color="@color/pink" />
             <corners android:radius="20dp" />
 </shape>

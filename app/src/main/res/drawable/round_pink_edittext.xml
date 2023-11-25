@@ -3,5 +3,5 @@
     <corners android:radius="8dp" /> <!-- Radius for rounded corners -->
     <stroke
         android:width="2dp"
-        android:color="@color/hot_pink" /> <!-- Border color and width -->
+        android:color="@color/pink" /> <!-- Border color and width -->
 </shape>

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.OhMyBenefits" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/hot_pink</item>
+         <item name="colorPrimary">@color/pink</item>
         <item name="colorPrimaryDark">@color/dark_hot_pink</item>
         <item name="colorAccent">@color/green</item>
 
