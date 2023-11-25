@@ -46,15 +46,26 @@
         <action
             android:id="@+id/action_iniciarSesion_to_restaurarContraseniaFragment"
             app:destination="@id/restaurarContraseniaFragment" />
+        <action
+            android:id="@+id/action_iniciarSesion_to_home"
+            app:destination="@id/home" />
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
         android:name="com.example.ohmybenefits.ui.fragments.RegistroFragment"
         android:label="fragment_registro"
-        tools:layout="@layout/fragment_registro" />
+        tools:layout="@layout/fragment_registro" >
+        <action
+            android:id="@+id/action_registroFragment_to_iniciarSesion"
+            app:destination="@id/iniciarSesion" />
+    </fragment>
     <fragment
         android:id="@+id/restaurarContraseniaFragment"
         android:name="com.example.ohmybenefits.ui.fragments.RestaurarContraseniaFragment"
         android:label="fragment_restaurar_contrasenia"
-        tools:layout="@layout/fragment_restaurar_contrasenia" />
+        tools:layout="@layout/fragment_restaurar_contrasenia" >
+        <action
+            android:id="@+id/action_restaurarContraseniaFragment_to_iniciarSesion"
+            app:destination="@id/iniciarSesion" />
+    </fragment>
 </navigation>
