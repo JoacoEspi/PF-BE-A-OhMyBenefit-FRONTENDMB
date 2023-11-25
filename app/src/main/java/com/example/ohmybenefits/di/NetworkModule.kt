@@ -20,6 +20,7 @@ object NetworkModule {
     private var client: OkHttpClient = OkHttpClient.Builder().apply {
         addInterceptor(InterceptorCustom)
     }.build()
+
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
@@ -32,7 +33,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideProductoApiClient(retrofit: Retrofit): ProductoApiClient{
+    fun provideProductoApiClient(retrofit: Retrofit): ProductoApiClient {
         return retrofit.create(ProductoApiClient::class.java)
     }
 
@@ -41,5 +42,4 @@ object NetworkModule {
     fun provideUsuarioApiClient(retrofit: Retrofit): UsuarioApiClient{
         return retrofit.create(UsuarioApiClient::class.java)
     }
-
 }

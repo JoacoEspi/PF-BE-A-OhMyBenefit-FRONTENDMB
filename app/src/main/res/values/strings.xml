@@ -19,7 +19,6 @@
     <string name="warning_reset_msg2">No has ingresado una respuesta</string>
     <string name="warning_reset_msg3">No has ingresado una nueva contraseña</string>
     <string name="warning_reset_msg4">No has ingresado tu pregunta de seguridad</string>
-
     <!--Registry-->
     <string name="registro_titulo">Registro</string>
     <string name="registro_nombre_hint">Nombre</string>
@@ -32,6 +31,15 @@
     <string name="registro_contrasenia_hint">Contraseña</string>
     <string name="registro_contrasenia2_hint">Repetir Contraseña</string>
     <string name="registro_btn_name">Registrar</string>
+    <string name="warning_registro_msg1">No ha seleccionado una pregunta de seguridad</string>
+    <string name="warning_registro_msg2">No coinciden las contraseñas</string>
+    <string name="warning_registro_msg3">No has ingresado el nombre correctamente</string>
+    <string name="warning_registro_msg4">No has ingresado el apellido correctamente</string>
+    <string name="warning_registro_msg5">No has ingresado el telefono correctamente</string>
+    <string name="warning_registro_msg6">El correo ingresado no es correcto</string>
+    <string name="warning_registro_msg7">La fecha de nacimiento ingresada no es correcta</string>
+    <string name="warning_registro_msg8">No has ingresado la contraseña correctaemnet</string>
+  
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Cerrar</string>
     <string name="Home">Home</string>
@@ -41,12 +49,10 @@
     <string name="Comentario">Comentario</string>
     <string name="Configuracion">Configuracion</string>
     <string name="setting_modo_oscuro"> Modo Oscuro</string>
-    <string name="warning_registro_msg1">No ha seleccionado una pregunta de seguridad</string>
-    <string name="warning_registro_msg2">No coinciden las contraseñas</string>
-    <string name="warning_registro_msg3">No has ingresado el nombre correctamente</string>
-    <string name="warning_registro_msg4">No has ingresado el apellido correctamente</string>
-    <string name="warning_registro_msg5">No has ingresado el telefono correctamente</string>
-    <string name="warning_registro_msg6">El correo ingresado no es correcto</string>
-    <string name="warning_registro_msg7">La fecha de nacimiento ingresada no es correcta</string>
-    <string name="warning_registro_msg8">No has ingresado la contraseña correctaemnet</string>
+    <string name="Escribe_comentario">Deja aqui tu comentario ...</string>
+    <string name="Enviar_Comentario">Enviar Comentario</string>
+    <string name="Title_Comment">Comentario</string>
+    <string name="Comentario_item">Comentario:</string>
+    <string name="Score_item">Score:</string>
+    <string name="Magnitud_item">Intensidad:</string>
 </resources>
