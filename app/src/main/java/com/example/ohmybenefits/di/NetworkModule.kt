@@ -3,6 +3,7 @@ package com.example.ohmybenefits.di
 import com.example.ohmybenefits.core.Config
 import com.example.ohmybenefits.core.InterceptorCustom
 import com.example.ohmybenefits.data.network.interfaces.ProductoApiClient
+import com.example.ohmybenefits.data.network.interfaces.UsuarioApiClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +11,6 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -34,6 +34,12 @@ object NetworkModule {
     @Provides
     fun provideProductoApiClient(retrofit: Retrofit): ProductoApiClient{
         return retrofit.create(ProductoApiClient::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUsuarioApiClient(retrofit: Retrofit): UsuarioApiClient{
+        return retrofit.create(UsuarioApiClient::class.java)
     }
 
 }

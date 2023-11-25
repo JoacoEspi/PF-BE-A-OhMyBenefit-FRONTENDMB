@@ -4,10 +4,11 @@ import com.example.ohmybenefits.data.model.Data
 import com.example.ohmybenefits.data.model.UsuarioApiResponse
 
 data class UsuarioResponse(
-    val data: Data?,
     val success: Boolean,
-    val message: String
+    val message: String?,
+    val result: String?,
+    val data: Data?,
 )
 
 
- fun UsuarioApiResponse.toDomain() = UsuarioResponse(data, success, message)
+ fun UsuarioApiResponse.toDomain() = UsuarioResponse(success, message, result, data)

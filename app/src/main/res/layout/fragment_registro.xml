@@ -4,29 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.RegistroFragment">
+    android:id="@+id/scrollViewRegistro"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/creamy_white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        tools:context=".ui.fragments.RegistroFragment">
 
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="361dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="364dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/registro_titulo"
             android:textAlignment="center"
-            android:textColor="@color/hot_pink"
+            android:textColor="@color/pink"
             android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline12"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guideline11" />
-
 
         <EditText
             android:id="@+id/registro_nombre_input"
@@ -88,15 +89,13 @@
             app:layout_constraintTop_toTopOf="@+id/guideline12"
             app:layout_constraintVertical_bias="0.336" />
 
-        <!--Preguntas de seguridad-->
-
 
         <EditText
             android:id="@+id/registro_fecha_input"
             android:layout_width="327dp"
             android:layout_height="52dp"
             android:hint="@string/registro_fecha_hint"
-            android:inputType="date"
+            android:inputType="datetime"
             android:textColorHint="@color/green"
             style="@style/round_pink_edit_text"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -106,17 +105,19 @@
             app:layout_constraintTop_toTopOf="@+id/guideline12"
             app:layout_constraintVertical_bias="0.441" />
 
+        <!--Preguntas de seguridad-->
+
+
         <Spinner
             android:id="@+id/registro_spinner_preguntas"
             style="@style/round_pink_edit_text"
             android:layout_width="327dp"
             android:layout_height="52dp"
-            android:layout_marginBottom="248dp"
+            android:layout_marginBottom="252dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
-            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintHorizontal_bias="0.54"
             app:layout_constraintStart_toStartOf="@+id/guideline11"
-
             tools:visibility="visible" />
 
         <EditText
@@ -125,7 +126,7 @@
             android:layout_width="327dp"
             android:layout_height="52dp"
             android:hint="@string/registro_respuesta_hint"
-            android:inputType="date"
+            android:inputType="text"
             android:textColorHint="@color/green"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintEnd_toStartOf="@+id/guideline10"
@@ -150,7 +151,7 @@
             app:passwordToggleTint="@color/green">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registro_contraseña_input"
+                android:id="@+id/registro_contrasenia_input"
                 style="@style/round_pink_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

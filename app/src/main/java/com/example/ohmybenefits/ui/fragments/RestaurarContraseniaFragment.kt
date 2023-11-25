@@ -1,60 +1,135 @@
 package com.example.ohmybenefits.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.ohmybenefits.R
+import com.example.ohmybenefits.databinding.FragmentRestaurarContraseniaBinding
+import com.example.ohmybenefits.ui.viewmodel.UsuarioViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RestaurarContraseniaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class RestaurarContraseniaFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding: FragmentRestaurarContraseniaBinding
+    private val usuarioViewModel: UsuarioViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_restaurar_contrasenia, container, false)
+        binding = FragmentRestaurarContraseniaBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RestaurarContraseniaFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RestaurarContraseniaFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val navController = findNavController()
+        val spinner = binding.spinnerQuestions
+        val emailInput = binding.resetPassEmailInput
+        val respuestaInput =binding.resetPassAnsInput
+        val contraseniaInput = binding.resetNewPassInput
+        val btnReset = binding.resetPassButton
+
+        if(spinner != null){
+            ArrayAdapter.createFromResource(
+                requireContext(),
+                R.array.preguntas_seguridad,
+                android.R.layout.simple_spinner_item
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinner.adapter = adapter
+            }
+        }
+
+
+        btnReset.setOnClickListener {
+            val email = emailInput.text.toString()
+            val respuesta = respuestaInput.text.toString()
+            val contrasenia = contraseniaInput.text.toString()
+            var pregunta : String
+
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                   pregunta = parent?.getItemAtPosition(position).toString()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
                 }
             }
+
+            pregunta = binding.spinnerQuestions.selectedItem.toString()
+
+            if(email.isNotEmpty() && respuesta.isNotEmpty() && contrasenia.isNotEmpty() && pregunta != getString(R.string.registro_pregunta_subtittle)){
+                try{
+                    usuarioViewModel.resetearContrasenia(email, pregunta ,respuesta,contrasenia)
+                    showSuccessDialog("Has podido restablecer tu contraseña, recuerda iniciar sesion")
+                    Log.d("resultado reset:", usuarioViewModel.successMessage)
+
+                    val action = RestaurarContraseniaFragmentDirections.actionRestaurarContraseniaFragmentToIniciarSesion()
+                    navController.navigate(action)
+                }catch(e: Exception){
+                    showAlertDialog("Cuidado ${e.message.toString()}")
+                }
+
+            } else if(email.isEmpty()){
+                showAlertDialog(getString(R.string.warning_reset_msg1))
+            } else if(respuesta.isEmpty()){
+                showAlertDialog(getString(R.string.warning_reset_msg2))
+            } else if(contrasenia.isEmpty()){
+                showAlertDialog(getString(R.string.warning_reset_msg3))
+            } else if(pregunta == getString(R.string.registro_pregunta_subtittle)){
+                showAlertDialog(getString(R.string.warning_reset_msg4))
+            }
+
+
+
+        }
+
     }
+
+    private fun showAlertDialog(msg: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Hay un problema")
+            .setMessage(msg)
+            .setPositiveButton("Ok"){dialog, id ->
+                Toast.makeText(requireContext(), "Eso es! sigue intentandolo", Toast.LENGTH_SHORT).show()
+            }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    private fun showSuccessDialog(msg: String) {
+        val builder = AlertDialog.Builder(requireContext())
+        builder
+            .setMessage(msg)
+            .setPositiveButton("Ok"){dialog, id ->
+                Toast.makeText(requireContext(), "Eso es!", Toast.LENGTH_SHORT).show()
+            }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
 }
