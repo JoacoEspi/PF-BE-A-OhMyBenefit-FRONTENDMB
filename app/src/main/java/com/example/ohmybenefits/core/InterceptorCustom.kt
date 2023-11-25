@@ -10,10 +10,10 @@ object InterceptorCustom : Interceptor {
         request = request.newBuilder()
             .header("Accept", "application/json")
             .header("Content-Type", "application/json")
+            //.header("Authorization", preferences.obtenerToken())
             .build()
 
         return chain.proceed(request)
     }
-
 
 }

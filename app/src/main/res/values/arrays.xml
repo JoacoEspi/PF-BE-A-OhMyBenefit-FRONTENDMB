@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preguntas_seguridad">
+        <item>Pregunta de Seguridad</item>
+        <item>Nombre de Mascota</item>
+        <item>Postre Favorito</item>
+        <item>Color Favorito</item>
+        <item>Apellido de Abuelo</item>
+    </array>
+</resources>
