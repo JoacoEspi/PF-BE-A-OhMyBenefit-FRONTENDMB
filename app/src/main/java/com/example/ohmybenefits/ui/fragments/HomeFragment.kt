@@ -48,10 +48,6 @@ class HomeFragment : Fragment() {
         productoRecyclerView = view.findViewById(R.id.recyclerView)
         categoriasRecyclerView = view.findViewById(R.id.catRecyclerView)
 
-       //val productoLayoutManager =
-            //LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        //productoRecyclerView.layoutManager = productoLayoutManager
-
         val manager = GridLayoutManager(context, 2)
         productoRecyclerView.layoutManager = manager
 
@@ -64,62 +60,36 @@ class HomeFragment : Fragment() {
         categoriaAdapter = CategoriaAdapter(requireContext(), obtenerListaDeCategorias())
         categoriasRecyclerView.adapter = categoriaAdapter
 
-        listarProductos()
-
-        buscarProductos()
-
-        buscarPorCategoria()
+        setListeners()
     }
 
-    private fun listarProductos() {
-        lifecycleScope.launch {
-            productoViewModel.listarProductos()
-        }
+    private fun obtenerListaDeCategorias(): List<CategoriaModel> {
+        return listOf(
+            CategoriaModel(Categorias.BEBIDAS, R.drawable.bebidas),
+            CategoriaModel(Categorias.LIMPIEZA, R.drawable.limpieza),
+            CategoriaModel(Categorias.PERFUMERIA, R.drawable.perfumeria),
+            CategoriaModel(Categorias.CONGELADOS, R.drawable.congelados),
+            CategoriaModel(Categorias.ALMACEN, R.drawable.almacen)
+        )
+    }
 
-        productoViewModel.productList.observe(viewLifecycleOwner) {
-            productoAdapter.submitList(it)
-        }
+    private fun setListeners() {
 
         productoRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState != RecyclerView.SCROLL_STATE_IDLE) {
+                    return;
+                }
                 val layoutManager = recyclerView.layoutManager as LinearLayoutManager
                 val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
                 val totalItemCount = layoutManager.itemCount
-
                 if (lastVisibleItemPosition == totalItemCount - 1) {
-                    productoViewModel.listarProductos()
+                    productoViewModel.filtrarProductos(true)
                 }
             }
         })
-    }
 
-    private fun buscarPorCategoria() {
-        categoriaAdapter.setOnItemClickListener(object : CategoriaAdapter.OnItemClickListener {
-            override fun onItemClick(categoria: CategoriaModel) {
-                lifecycleScope.launch {
-                    productoViewModel.listarProductosPorCategoria(categoria.nombre.toString())
-                }
-                productoViewModel.productByCategoryList.observe(viewLifecycleOwner) {
-                    productoAdapter.submitList(it)
-                }
-                productoRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                        super.onScrolled(recyclerView, dx, dy)
-                        val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                        val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-                        val totalItemCount = layoutManager.itemCount
-
-                        if (lastVisibleItemPosition == totalItemCount - 1) {
-                            productoViewModel.listarProductosPorCategoria(categoria.nombre.toString())
-                        }
-                    }
-                })
-            }
-        })
-    }
-
-    private fun buscarProductos() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(palabra: String?): Boolean {
                 return false
@@ -128,24 +98,29 @@ class HomeFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 lifecycleScope.launch {
                     if (query != null) {
+                        productoViewModel.clear()
                         productoViewModel.buscarPalabra(query)
                     }
-                }
-                productoViewModel.productSearchList.observe(viewLifecycleOwner) {
-                    productoAdapter.submitList(it)
                 }
                 return true
             }
         })
-    }
 
-    private fun obtenerListaDeCategorias(): List<CategoriaModel> {
-        return listOf(
-            CategoriaModel(Categorias.BEBIDAS, R.drawable.bebidas),
-            CategoriaModel(Categorias.LIMPIEZA, R.drawable.limpieza),
-            CategoriaModel(Categorias.PERFUMERIA, R.drawable.perfumeria),
-            CategoriaModel(Categorias.ALMACEN, R.drawable.almacen),
-            CategoriaModel(Categorias.CONGELADOS, R.drawable.congelados)
-        )
+        categoriaAdapter.setOnItemClickListener(object : CategoriaAdapter.OnItemClickListener {
+            override fun onItemClick(categoria: CategoriaModel) {
+                lifecycleScope.launch {
+                    productoViewModel.clear()
+                    productoViewModel.setCategory(categoria.nombre.toString())
+                    productoViewModel.filtrarProductos(false)
+                }
+            }
+        })
+
+        lifecycleScope.launch {
+            productoViewModel.listarProductos()
+        }
+        productoViewModel.productList.observe(viewLifecycleOwner) {
+            productoAdapter.submitList(it)
+        }
     }
 }

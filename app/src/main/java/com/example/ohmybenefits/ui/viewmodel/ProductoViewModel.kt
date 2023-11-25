@@ -12,16 +12,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductoViewModel @Inject constructor(private val productService: ProductoService) :
+class ProductoViewModel @Inject constructor(private val productService: ProductoService):
     ViewModel() {
 
+    private val _categorySelected = MutableLiveData<String>()
     private val _productList = MutableLiveData<List<ProductoModel>>()
-    private val _productSearchList = MutableLiveData<List<ProductoModel>>()
-    private val _productByCategoryList = MutableLiveData<List<ProductoModel>>()
-
     val productList: LiveData<List<ProductoModel>> get() = _productList
-    val productSearchList: LiveData<List<ProductoModel>> get() = _productSearchList
-    val productByCategoryList: LiveData<List<ProductoModel>> get() = _productByCategoryList
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -32,14 +28,6 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
 
     fun setListaProducto(listaProducto: List<ProductoModel>) {
         _productList.value = listaProducto
-    }
-
-    fun setListaProductoBuscado(lista: List<ProductoModel>) {
-        _productSearchList.value = lista
-    }
-
-    fun setListaProductoBuscadoPorCategoria(lista: List<ProductoModel>) {
-        _productByCategoryList.value = lista
     }
 
     private var currentPage = 1
@@ -60,14 +48,17 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
         }
     }
 
-    fun listarProductosPorCategoria(categoria: String) {
-        clearCategoryProducts()
+    fun listarProductosPorCategoria() {
         viewModelScope.launch {
             setIsLoading(true)
             try {
-                val productList = productService.listarProductosPorCategoria(categoria, currentPage, PER_PAGE)
+                val productList = productService.listarProductosPorCategoria(
+                    _categorySelected.value.toString(),
+                    currentPage,
+                    PER_PAGE
+                )
                 Log.d("ProductoViewModel", "Product list by category: $productList")
-                setListaProductoBuscadoPorCategoria((_productByCategoryList.value ?: emptyList()) + productList)
+                setListaProducto((_productList.value ?: emptyList()) + productList)
                 currentPage++
             } catch (e: Exception) {
                 Log.e("ProductoViewModel", "Error: ${e.message}")
@@ -78,13 +69,13 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
     }
 
     fun buscarPalabra(palabra: String) {
-        clearSearchProducts()
         viewModelScope.launch {
             setIsLoading(true)
             try {
                 val productList = productService.buscarPalabra(palabra)
                 Log.d("ProductoViewModel", "Search products: $productList")
-                setListaProductoBuscado((_productSearchList.value ?: emptyList()) + productList)
+                setListaProducto((_productList.value ?: emptyList()) + productList)
+                blockScrollLoad()
             } catch (e: Exception) {
                 Log.e("ProductoViewModel", "Error: ${e.message}")
             } finally {
@@ -99,16 +90,33 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
 
     fun clear() {
         _productList.value = emptyList()
-        _productSearchList.value = emptyList()
-        _productByCategoryList.value = emptyList()
         currentPage = 1
     }
 
-    fun clearSearchProducts() {
-        _productSearchList.value = emptyList()
+    fun blockScrollLoad() {
+        currentPage = -1
     }
 
-    fun clearCategoryProducts() {
-        _productByCategoryList.value = emptyList()
+    fun isScrollLoadingDisabled(): Boolean {
+        return currentPage == -1
+    }
+
+    fun filtrarProductos(isScrollFilter: Boolean) {
+        if (isScrollFilter && isScrollLoadingDisabled()) {
+            return
+        }
+        if (_categorySelected.value.isNullOrBlank()) {
+            listarProductos()
+        } else {
+            listarProductosPorCategoria()
+        }
+    }
+
+    fun setCategory(categoria: String) {
+        if (_categorySelected.value.toString().equals(categoria)) {
+            _categorySelected.value = ""
+        } else {
+            _categorySelected.value = categoria
+        }
     }
 }
