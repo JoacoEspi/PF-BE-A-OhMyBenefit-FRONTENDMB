@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,6 +53,11 @@ class PresupuestoFragment : Fragment() {
         val botonGuardar = view.findViewById<Button>(R.id.botonGuardarPresupuesto)
         botonGuardar.setOnClickListener {
             presupuestoViewModel.guardarPresupuesto()
+            Toast.makeText(
+                context,
+                "Su presupuesto se ha guardado correctamente puede verlo desde nuestra pagina web",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

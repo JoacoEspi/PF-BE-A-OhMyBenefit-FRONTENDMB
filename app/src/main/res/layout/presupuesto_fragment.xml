@@ -13,7 +13,7 @@
             android:id="@+id/textProductosSeleccionados"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Productos seleccionados"
+            android:text="@string/Presupuesto_Titulo"
             android:textSize="22sp"
             android:textColor="@color/turquoise"
             android:textStyle="bold"
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:textStyle="bold"
-                    android:text="Total: $"
+                    android:text="@string/Presupuesto_Total"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -72,7 +72,7 @@
                     android:layout_marginRight="5dp"
                     android:backgroundTint="@color/turquoise"
                     android:textStyle="bold"
-                    android:text="Guardar presupuesto" />
+                    android:text="@string/Botton_Presupuesto_guardar" />
 
                 <Button
                     android:id="@+id/botonLimpiarPresupuesto"
@@ -80,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
-                    android:text="Limpiar presupuesto"
+                    android:text="@string/Botton_Presupuesto_borrar"
                     android:backgroundTint="@color/turquoise"
                     android:textStyle="bold"/>
 

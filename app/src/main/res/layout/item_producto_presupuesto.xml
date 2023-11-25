@@ -12,7 +12,7 @@
         android:id="@+id/textNombreProductoPresupuesto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre del Producto"
+        android:text="@string/Prod_nom"
         android:textColor="@color/turquoise"
         android:textStyle="bold"/>
 
@@ -20,25 +20,25 @@
         android:id="@+id/textCantidad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cantidad: X"/>
+        android:text="@string/Prod_cant"/>
 
     <TextView
         android:id="@+id/textPrecioUnitario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Precio Unitario: $X"/>
+        android:text="@string/Prod_price"/>
 
     <TextView
         android:id="@+id/textPrecioTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Precio Total: $X"/>
+        android:text="@string/Prod_priceTotal"/>
 
     <TextView
         android:id="@+id/textSuper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comercio: "/>
+        android:text="@string/Prod_comercio"/>
 
 </LinearLayout>

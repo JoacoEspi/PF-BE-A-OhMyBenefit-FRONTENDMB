@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Nombre del Producto"
+            android:text="@string/Prod_nom"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textStyle="bold"
-            android:text="Precio: $0.00"
+            android:text="@string/Prod_price"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:backgroundTint="@color/turquoise"
             android:textStyle="bold"
             android:layout_marginRight="16dp"
-            android:hint="Cantidad"
+            android:hint="@string/Botton_add_cant"
             android:inputType="number" />
 
         <Button
@@ -85,7 +85,7 @@
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/turquoise"
             android:textStyle="bold"
-            android:text="Agregar" />
+            android:text="@string/Botton_add_prod" />
 
         <Button
             android:id="@+id/comerciosButton"
@@ -95,7 +95,7 @@
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/turquoise"
             android:textStyle="bold"
-            android:text="Comercios"/>
+            android:text="@string/Botton_goto_geo"/>
     </LinearLayout>
 
 </RelativeLayout>
