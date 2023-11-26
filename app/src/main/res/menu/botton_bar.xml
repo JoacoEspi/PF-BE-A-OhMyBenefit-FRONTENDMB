@@ -7,11 +7,6 @@
         android:title="@string/Home"
         />
     <item
-        android:id="@+id/perfil"
-        android:icon="@drawable/baseline_profile_24"
-        android:title="@string/Perfil"
-        />
-    <item
         android:id="@+id/presupuesto"
         android:icon="@drawable/baseline_view_list_24"
         android:title="@string/Presupuesto"

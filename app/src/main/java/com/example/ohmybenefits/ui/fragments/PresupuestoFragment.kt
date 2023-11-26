@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
@@ -17,11 +18,13 @@ import com.example.ohmybenefits.adapters.PresupuestoAdapter
 import com.example.ohmybenefits.ui.viewmodel.PresupuestoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.lifecycle.Observer
+import com.example.ohmybenefits.ui.viewmodel.UsuarioViewModel
 
 @AndroidEntryPoint
 class PresupuestoFragment : Fragment() {
     private val presupuestoViewModel: PresupuestoViewModel by activityViewModels()
     private val adapter = PresupuestoAdapter()
+    private val usuarioViewModel: UsuarioViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,12 +55,21 @@ class PresupuestoFragment : Fragment() {
         }
         val botonGuardar = view.findViewById<Button>(R.id.botonGuardarPresupuesto)
         botonGuardar.setOnClickListener {
-            presupuestoViewModel.guardarPresupuesto()
-            Toast.makeText(
-                context,
-                "Su presupuesto se ha guardado correctamente puede verlo desde nuestra pagina web",
-                Toast.LENGTH_SHORT
-            ).show()
+            presupuestoViewModel.guardarPresupuesto(usuarioViewModel)
+
+            if (usuarioViewModel.mail.value == null) {
+                Toast.makeText(
+                    context,
+                    "Para guardar su presupuesto primero debe iniciar sesión",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    context,
+                    "Su presupuesto se ha guardado correctamente. Puede verlo desde nuestra página web.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

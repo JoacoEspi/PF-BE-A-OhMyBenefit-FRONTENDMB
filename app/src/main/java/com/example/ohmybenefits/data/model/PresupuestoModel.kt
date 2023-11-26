@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 data class PresupuestoModel(
     @SerializedName("items") val items: ArrayList<ProductoParaPresupuesto>,
     @SerializedName("importeTotal") val importeTotal: Double,
-    @SerializedName("mail") val mail: String
+    @SerializedName("mail") val mail: String?
 )

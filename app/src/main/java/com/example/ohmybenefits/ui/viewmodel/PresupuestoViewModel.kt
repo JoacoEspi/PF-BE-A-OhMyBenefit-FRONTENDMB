@@ -25,9 +25,9 @@ class PresupuestoViewModel @Inject constructor(
     val productosSeleccionados: LiveData<List<ProductoParaPresupuesto>> get() = _productosSeleccionados
     fun agregarProducto(producto: Producto, cantidad: Int) {
         val valorPresupuesto: Double = presupuesto.value ?: 0.0
-        val productoConCantidad = ProductoParaPresupuesto(producto, cantidad, producto.precio, valorPresupuesto)
+        val productoParaPresupuesto = ProductoParaPresupuesto(producto, cantidad, producto.precio, valorPresupuesto)
         val listaActual = _productosSeleccionados.value.orEmpty().toMutableList()
-        listaActual.add(productoConCantidad)
+        listaActual.add(productoParaPresupuesto)
         _productosSeleccionados.value = listaActual
         calcularTotal()
     }
@@ -51,33 +51,40 @@ class PresupuestoViewModel @Inject constructor(
         _presupuesto.value = 0.0
         _productosSeleccionados.value = emptyList()
     }
-    fun guardarPresupuesto() {
+    fun guardarPresupuesto(usuarioViewModel: UsuarioViewModel) {
         val valorPresupuesto: Double = presupuesto.value ?: 0.0
-        val mailUsuario = "claraz@gmail.com"
-        val presupuestoModel = PresupuestoModel(
-            items = productosSeleccionados.value.orEmpty().map { productoConCantidad ->
-                ProductoParaPresupuesto(
-                    producto = productoConCantidad.producto,
-                    cantidad = productoConCantidad.cantidad,
-                    precioUnitario = productoConCantidad.producto.precio,
-                    total = valorPresupuesto
-                )
-            }.toCollection(ArrayList()),
-            importeTotal = presupuesto.value ?: 0.0,
-            mail = mailUsuario
-        )
+        val mailUsuario = usuarioViewModel.mail.value.toString()
 
-        viewModelScope.launch {
-            try {
-                val response = service.guardarPresupuesto(presupuestoModel)
-                if (response.isSuccessful) {
-                    Log.d("guardarPresupuesto", response.message())
-                } else {
-                    Log.e("guardarPresupuesto", "Error al subir el presupuesto. Código: ${response.code()}")
+        if (mailUsuario != null) {
+            val presupuestoModel = PresupuestoModel(
+                items = productosSeleccionados.value.orEmpty().map { productoConCantidad ->
+                    ProductoParaPresupuesto(
+                        producto = productoConCantidad.producto,
+                        cantidad = productoConCantidad.cantidad,
+                        precioUnitario = productoConCantidad.producto.precio,
+                        total = valorPresupuesto
+                    )
+                }.toCollection(ArrayList()),
+                importeTotal = presupuesto.value ?: 0.0,
+                mail = mailUsuario
+            )
+
+            viewModelScope.launch {
+                try {
+                    val response = service.guardarPresupuesto(presupuestoModel)
+                    if (response.isSuccessful) {
+                        Log.d("guardarPresupuesto", response.message())
+                    } else {
+                        Log.e("guardarPresupuesto", "Error al subir el presupuesto. Código: ${response.code()}")
+                    }
+                } catch (e: Exception) {
+                    Log.e("guardarPresupuesto", "Excepción al subir el presupuesto: ${e.message}")
                 }
-            } catch (e: Exception) {
-                Log.e("guardarPresupuesto", "Excepción al subir el presupuesto: ${e.message}")
             }
+        } else {
+            // Manejar el caso en que el correo electrónico sea nulo
+            Log.e("guardarPresupuesto", "El correo electrónico del usuario es nulo. No se puede guardar el presupuesto.")
+            // También puedes mostrar un mensaje al usuario si es necesario
         }
     }
 }
