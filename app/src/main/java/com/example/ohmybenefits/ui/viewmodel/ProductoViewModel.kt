@@ -1,6 +1,7 @@
 package com.example.ohmybenefits.ui.viewmodel
 
 import android.util.Log
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,12 +13,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductoViewModel @Inject constructor(private val productService: ProductoService):
+class ProductoViewModel @Inject constructor(private val productService: ProductoService) :
     ViewModel() {
 
     private val _categorySelected = MutableLiveData<String>()
     private val _productList = MutableLiveData<List<ProductoModel>>()
+    private val _textError = MutableLiveData<String>()
+    private val _selectedCategoryView = MutableLiveData<CardView>()
+
     val productList: LiveData<List<ProductoModel>> get() = _productList
+    val textError: LiveData<String> get() = _textError
+    val selectedCategoryView: LiveData<CardView> get() = _selectedCategoryView
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
@@ -42,6 +48,7 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
                 currentPage++
             } catch (e: Exception) {
                 Log.e("ProductoViewModel", "Error: ${e.message}")
+                _textError.value = "Error al listar productos"
             } finally {
                 setIsLoading(false)
             }
@@ -62,6 +69,7 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
                 currentPage++
             } catch (e: Exception) {
                 Log.e("ProductoViewModel", "Error: ${e.message}")
+                _textError.value = "Error al listar productos de categorias"
             } finally {
                 setIsLoading(false)
             }
@@ -69,6 +77,7 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
     }
 
     fun buscarPalabra(palabra: String) {
+
         viewModelScope.launch {
             setIsLoading(true)
             try {
@@ -78,6 +87,7 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
                 blockScrollLoad()
             } catch (e: Exception) {
                 Log.e("ProductoViewModel", "Error: ${e.message}")
+                _textError.value = "Error al buscar productos"
             } finally {
                 setIsLoading(false)
             }
@@ -90,6 +100,7 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
 
     fun clear() {
         _productList.value = emptyList()
+        selectedCategoryView.value?.cardElevation = 0f
         currentPage = 1
     }
 
@@ -112,11 +123,13 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
         }
     }
 
-    fun setCategory(categoria: String) {
+    fun setCategory(categoria: String, view: CardView) {
         if (_categorySelected.value.toString().equals(categoria)) {
             _categorySelected.value = ""
         } else {
             _categorySelected.value = categoria
+            view.cardElevation = 40f
+            _selectedCategoryView.value = view
         }
     }
 }

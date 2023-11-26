@@ -1,34 +1,26 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.OhMyBenefits" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/libre_franklin_thin</item>
+        <item name="android:background">@drawable/rounded_background</item>
+        <item name="strokeColor">@color/pink</item>
     </style>
 
     <style name="Theme.OhMyBenefits" parent="Base.Theme.OhMyBenefits" />
 
     <style name="NavDrawerTextStyle" parent="Base.TextAppearance.AppCompat">
-        <item name="android:fontFamily">sans-serif-thin</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:color">@color/menu_color</item>
         <item name="itemTextColor">@color/black</item>
     </style>
 
-    <style name="Widget.Button.Toggle" parent="android:Widget">
-        <item name="android:background">@drawable/ic_toggle_bg</item>
-        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
-    </style>
-    <style name="toggleButton" parent="android:Theme.Black">
-        <item name="android:buttonStyleToggle">@style/Widget.Button.Toggle</item>
-        <item name="android:textOn"></item>
-        <item name="android:textOff"></item>
-    </style>
     <style name="SearchStyle" parent="Widget.AppCompat.SearchView">
         <item name="android:editTextColor">@color/turquoise</item>
-        <item name="android:fontFamily">sans-serif-condensed-light</item>
+        <item name="android:fontFamily">@font/libre_franklin_thin</item>
         <item name="android:textSize">14sp</item>
     </style>
 </resources>

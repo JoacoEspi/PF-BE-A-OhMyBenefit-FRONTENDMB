@@ -1,24 +1,19 @@
 package com.example.ohmybenefits.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.ToggleButton
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
-import com.example.ohmybenefits.core.SharedPreferences
 import com.example.ohmybenefits.data.model.ProductoModel
 import com.example.ohmybenefits.ui.fragments.HomeFragmentDirections
 import com.squareup.picasso.Picasso
 
 class ProductoAdapter(
-    private val context: Context,
     private val navController: NavController
 ) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
 
@@ -49,12 +44,9 @@ class ProductoAdapter(
         private val nombre: TextView = itemView.findViewById(R.id.nombre)
         private val precio: TextView = itemView.findViewById(R.id.precio)
         private val productImage: ImageView = itemView.findViewById(R.id.image_prod)
-        private val prodFavoriteToggle: ToggleButton = itemView.findViewById(R.id.prod_fav)
         private val detalle: Button = itemView.findViewById(R.id.detalle)
 
         fun bind(producto: ProductoModel) {
-            val prefs = SharedPreferences(context)
-            val isFav = prefs.isFavoriteProduct(producto._id)
             val precioSigno = "$" + producto.precio
             categoria.text = producto.categorias[0]
             nombre.text = producto.nombre
@@ -63,33 +55,9 @@ class ProductoAdapter(
                 .load(producto.imageUrl)
                 .into(productImage)
 
-            prodFavoriteToggle.background = ContextCompat.getDrawable(
-                context,
-                if (isFav) R.drawable.ic_toggle_bg else R.drawable.ic_toggle
-            )
-            prodFavoriteToggle.isChecked = isFav
-
-            prodFavoriteToggle.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    prefs.addFavoriteProduct(producto._id)
-                    prodFavoriteToggle.isChecked = isChecked
-                    prodFavoriteToggle.background = ContextCompat.getDrawable(
-                        context,
-                        R.drawable.ic_toggle_bg
-                    )
-                } else {
-                    prefs.removeFavoriteProduct(producto._id)
-                    prodFavoriteToggle.isChecked = isChecked
-                    prodFavoriteToggle.background = ContextCompat.getDrawable(
-                        context,
-                        R.drawable.ic_toggle
-                    )
-                }
-            }
             detalle.setOnClickListener {
                 val action = HomeFragmentDirections.actionHomeToDetalle()
                 navController.navigate(action)
-                //navController.navigate(R.id.action_home_to_detalle)
             }
         }
     }

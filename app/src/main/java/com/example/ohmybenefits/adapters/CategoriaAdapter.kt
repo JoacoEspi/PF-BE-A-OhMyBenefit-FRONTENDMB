@@ -17,9 +17,10 @@ class CategoriaAdapter(
     RecyclerView.Adapter<CategoriaAdapter.ViewHolder>() {
 
     private var itemClickListener: OnItemClickListener? = null
+    private lateinit var view: View
 
     interface OnItemClickListener {
-        fun onItemClick(categoria: CategoriaModel)
+        fun onItemClick(categoria: CategoriaModel, itemView: View)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -27,7 +28,7 @@ class CategoriaAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_categoria, parent, false)
+        view = LayoutInflater.from(context).inflate(R.layout.item_categoria, parent, false)
         return ViewHolder(view)
     }
 
@@ -54,7 +55,7 @@ class CategoriaAdapter(
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    itemClickListener?.onItemClick(categorias[position])
+                    itemClickListener?.onItemClick(categorias[position], itemView)
                 }
             }
         }

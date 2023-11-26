@@ -7,22 +7,13 @@
     android:layout_marginVertical="0dp"
     app:cardElevation="10dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/start"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:orientation="vertical"
         android:padding="4dp">
 
-        <ToggleButton
-            android:id="@+id/prod_fav"
-            style="@style/toggleButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="end"
-            android:background="@drawable/heart_icon_switch_off"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/image_prod"
@@ -31,36 +22,35 @@
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
             android:src="@drawable/logo_omb"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/nombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
-            android:fontFamily="sans-serif-thin"
             android:text="Leche"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_prod" />
+            app:layout_constraintTop_toBottomOf="@+id/image_prod"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/categoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
-            android:fontFamily="sans-serif-light"
             android:text="LACTEOS"
             android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nombre" />
 
@@ -69,39 +59,60 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
-            android:fontFamily="sans-serif-light"
             android:text="$500"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/categoria" />
+            app:layout_constraintTop_toBottomOf="@+id/categoria"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp">
+        <Button
+            android:id="@+id/agregar"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:paddingLeft="1dp"
+            android:paddingTop="1dp"
+            android:paddingRight="1dp"
+            android:paddingBottom="1dp"
+            android:text="@string/agregar"
+            android:textColor="@color/turquoise"
+            android:textSize="12sp"
+            app:guidelineUseRtl="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.941"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:strokeColor="@color/pink"
+            tools:ignore="SmallSp" />
 
-            <Button
-                android:id="@+id/agregar"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif"
-                android:text="@string/agregar"
-                android:textAlignment="center"
-                android:textSize="8sp" />
+        <Button
+            android:id="@+id/detalle"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:paddingLeft="1dp"
+            android:paddingTop="1dp"
+            android:paddingRight="1dp"
+            android:paddingBottom="1dp"
+            android:text="@string/detalle"
+            android:textColor="@color/turquoise"
+            android:textSize="10sp"
+            app:guidelineUseRtl="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/agregar"
+            app:layout_constraintHorizontal_bias="0.061"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:strokeColor="@color/pink"
+            tools:ignore="SmallSp" />
 
-            <Button
-                android:id="@+id/detalle"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif"
-                android:text="@string/detalle"
-                android:textAlignment="center"
-                android:textSize="8sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

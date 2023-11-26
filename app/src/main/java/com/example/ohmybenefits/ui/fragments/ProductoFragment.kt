@@ -30,7 +30,7 @@ class ProductoFragment : Fragment() {
         Log.d("ProductoFragment", "onCreateView")
 
         productoViewModel.listarProductos()
-        productoAdapter = ProductoAdapter(requireContext(), findNavController())
+        productoAdapter = ProductoAdapter(findNavController())
 
         return inflater.inflate(R.layout.producto_fragment, container, false)
     }

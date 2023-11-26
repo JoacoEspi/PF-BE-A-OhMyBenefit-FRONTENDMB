@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -47,11 +49,10 @@ class HomeFragment : Fragment() {
         searchView = view.findViewById(R.id.searchView)
         productoRecyclerView = view.findViewById(R.id.recyclerView)
         categoriasRecyclerView = view.findViewById(R.id.catRecyclerView)
-
         val manager = GridLayoutManager(context, 2)
         productoRecyclerView.layoutManager = manager
 
-        productoAdapter = ProductoAdapter(requireContext(), findNavController())
+        productoAdapter = ProductoAdapter(findNavController())
         productoRecyclerView.adapter = productoAdapter
 
         val categoriasLayoutManager =
@@ -65,11 +66,11 @@ class HomeFragment : Fragment() {
 
     private fun obtenerListaDeCategorias(): List<CategoriaModel> {
         return listOf(
-            CategoriaModel(Categorias.BEBIDAS, R.drawable.bebidas),
-            CategoriaModel(Categorias.LIMPIEZA, R.drawable.limpieza),
-            CategoriaModel(Categorias.PERFUMERIA, R.drawable.perfumeria),
-            CategoriaModel(Categorias.CONGELADOS, R.drawable.congelados),
-            CategoriaModel(Categorias.ALMACEN, R.drawable.almacen)
+            CategoriaModel(Categorias.BEBIDAS, R.drawable.bebidas, 0),
+            CategoriaModel(Categorias.LIMPIEZA, R.drawable.limpieza, 1),
+            CategoriaModel(Categorias.PERFUMERIA, R.drawable.perfumeria, 2),
+            CategoriaModel(Categorias.CONGELADOS, R.drawable.congelados, 3),
+            CategoriaModel(Categorias.ALMACEN, R.drawable.almacen, 4)
         )
     }
 
@@ -107,10 +108,10 @@ class HomeFragment : Fragment() {
         })
 
         categoriaAdapter.setOnItemClickListener(object : CategoriaAdapter.OnItemClickListener {
-            override fun onItemClick(categoria: CategoriaModel) {
+            override fun onItemClick(categoria: CategoriaModel, itemView: View) {
                 lifecycleScope.launch {
                     productoViewModel.clear()
-                    productoViewModel.setCategory(categoria.nombre.toString())
+                    productoViewModel.setCategory(categoria.nombre.toString(), itemView as CardView)
                     productoViewModel.filtrarProductos(false)
                 }
             }
@@ -121,6 +122,11 @@ class HomeFragment : Fragment() {
         }
         productoViewModel.productList.observe(viewLifecycleOwner) {
             productoAdapter.submitList(it)
+        }
+        productoViewModel.textError.observe(viewLifecycleOwner) {
+            if (!it.isNullOrBlank()) {
+                Toast.makeText(context, it.toString(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
