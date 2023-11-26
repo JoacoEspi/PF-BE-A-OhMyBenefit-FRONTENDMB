@@ -32,6 +32,7 @@ class DetalleFragment : Fragment(), OnItemClickListener {
     private var param2: String? = null
     private var _binding: FragmentDetalleBinding? = null
     private lateinit var detalleViewModel: DetalleViewModel
+    val presupuestoViewModel: PresupuestoViewModel by activityViewModels()
     private val binding get() = _binding!!
     val idUsuarioHardCodeado = "653eebee4162199cc1f81006"
 

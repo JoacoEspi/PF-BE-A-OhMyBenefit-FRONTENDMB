@@ -6,7 +6,6 @@ import com.example.ohmybenefits.data.model.ResetContrasenia
 import com.example.ohmybenefits.data.model.UsuarioApiResponse
 import com.example.ohmybenefits.data.model.UsuarioModel
 import com.example.ohmybenefits.data.network.interfaces.UsuarioApiClient
-import com.example.ohmybenefits.data.model.ComentarioModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
