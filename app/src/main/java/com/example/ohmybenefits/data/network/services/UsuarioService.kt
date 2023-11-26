@@ -36,7 +36,7 @@ class UsuarioService @Inject constructor(
     
     suspend fun postComment(comment: ComentarioModel): Response<ComentarioModel> {
         return withContext(Dispatchers.IO){
-            service.postComment(comment)
+            apiClient.postComment(comment)
         }
     }
 }

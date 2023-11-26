@@ -47,13 +47,13 @@ class ProductoService @Inject constructor(
     }
     suspend fun obtenerDetalleProducto(idProducto: String, idUsuario: String): Response<ProductoDetalleModel> {
         return withContext(Dispatchers.IO) {
-            service.detailProduct(idProducto, idUsuario)
+            api.detailProduct(idProducto, idUsuario)
         }
     }
     suspend fun obtenerGeolocalizacion(latitud: Double?, longitud: Double?, codigoComercio: Int,direccion: String? ): Response<List<Lugar>>{
         val req = GeolocationRequest(latitud, longitud, codigoComercio, direccion)
         return withContext(Dispatchers.IO){
-            service.geolocation(req)
+            api.geolocation(req)
         }
     }
 }

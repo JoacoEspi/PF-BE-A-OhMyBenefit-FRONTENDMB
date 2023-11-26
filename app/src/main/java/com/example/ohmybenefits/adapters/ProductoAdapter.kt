@@ -56,7 +56,7 @@ class ProductoAdapter(
                 .into(productImage)
 
             detalle.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeToDetalle()
+                val action = HomeFragmentDirections.actionHomeToDetalle(producto._id, "653eebee4162199cc1f81006")
                 navController.navigate(action)
             }
         }

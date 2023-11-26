@@ -40,20 +40,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.home_fragment, container, false)
-
-        val btnMostrarDetalle: Button = view.findViewById(R.id.btnMostrarDetalle)
-        btnMostrarDetalle.setOnClickListener {
-            mostrarDetalle(view)
-        }
-
-        return view
-    }
-
-    private fun mostrarDetalle(view: View) {
-        val navController = view.findNavController()
-        val direccion = HomeFragmentDirections.actionHomeToDetalleFragment("652df11a467785e35ecd79d5", "653eebee4162199cc1f81006")
-        navController.navigate(direccion)
+        return inflater.inflate(R.layout.home_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

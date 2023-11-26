@@ -44,16 +44,7 @@ class DetalleFragment : Fragment(), OnItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DetalleFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
         _binding = FragmentDetalleBinding.inflate(inflater, container, false)
 
         val view = binding.root
@@ -93,5 +84,15 @@ class DetalleFragment : Fragment(), OnItemClickListener {
         val idProductoRecomendado = recomendacion.id
         val direccion = DetalleFragmentDirections.actionDetalleFragmentSelf(idProductoRecomendado, idUsuarioHardCodeado)
         navController.navigate(direccion)
+    }
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            DetalleFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, param1)
+                    putString(ARG_PARAM2, param2)
+                }
+            }
     }
 }
