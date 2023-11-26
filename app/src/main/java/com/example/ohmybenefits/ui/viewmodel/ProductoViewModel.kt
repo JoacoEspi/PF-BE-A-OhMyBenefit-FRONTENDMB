@@ -95,7 +95,7 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
     }
 
     companion object {
-        const val PER_PAGE = 5
+        const val PER_PAGE = 20
     }
 
     fun clear() {
