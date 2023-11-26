@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         prodViewModel = ViewModelProvider(this)[ProductoViewModel::class.java]
 
-       val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar) //Ojo con Dark Mode
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)) {
+        if (toggle.onOptionsItemSelected(item)) {
             return true
         }
         return super.onOptionsItemSelected(item)

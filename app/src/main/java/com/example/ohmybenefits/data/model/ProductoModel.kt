@@ -8,6 +8,6 @@ data class ProductoModel(
     @SerializedName("nombre") val nombre: String,
     @SerializedName("precio") val precio: String,
     @SerializedName("categorias") val categorias: ArrayList<String>,
-    @SerializedName("imagenUrl") val imagenUrl: String,
+    @SerializedName("imageUrl") val imageUrl: String,
     @SerializedName("idComercio") val idComercio: String
 )

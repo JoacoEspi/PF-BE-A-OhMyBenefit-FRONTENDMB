@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<style name="ButtonNoFill" parent="Widget.Material3.Button">
+    <item name="android:background">@drawable/button_no_fill</item>
+</style>
+
 <style name="round_pink_edit_text">
     <item name="android:background">@drawable/round_pink_edittext</item>
     <item name="android:padding">10dp</item>
@@ -11,5 +15,4 @@
     <item name="android:padding">10dp</item>
     <item name="android:fontFamily">sans-serif-light</item>
 </style>
-
 </resources>

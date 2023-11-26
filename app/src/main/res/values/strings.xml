@@ -45,10 +45,14 @@
     <string name="Home">Home</string>
     <string name="Perfil">Perfil</string>
     <string name="Presupuesto">Presupuesto</string>
-    <string name="Iniciar_sesion">Iniciar Sesion</string>
+    <string name="Iniciar_sesion">Login</string>
     <string name="Comentario">Comentario</string>
     <string name="Configuracion">Configuracion</string>
     <string name="setting_modo_oscuro"> Modo Oscuro</string>
+    <string name="agregar">+</string>
+    <string name="detalle">Ver más</string>
+    <string name="categorias">Categorias</string>
+    <string name="search">Buscar producto por nombre</string>
     <string name="Escribe_comentario">Deja aqui tu comentario ...</string>
     <string name="Enviar_Comentario">Enviar Comentario</string>
     <string name="Title_Comment">Comentario</string>
