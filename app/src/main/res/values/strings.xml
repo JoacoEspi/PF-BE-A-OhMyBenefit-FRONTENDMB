@@ -1,6 +1,45 @@
 <resources>
     <string name="app_name">OhMyBenefits</string>
-    <string name="base_url">http://localhost:8080</string>
+    <string name="base_url">http://10.0.2.2:8080</string>
+    <!--Login-->
+    <string name="login_tittle">Login</string>
+    <string name="forget_pass_msg"><u>He olvidado mi contraseña</u></string>
+    <string name="registry_msg"><u>¿Aun no tienes una cuenta? Registrate</u></string>
+    <string name="warning_email">No has ingresado un correo</string>
+    <string name="warning_pass">No has ingresado la contraseña</string>
+    <!--Reset pass-->
+    <string name="reset_qpass_tittle">Seleccione su pregunta de seguridad</string>
+    <string name="reset_qpass_msg">La pregunta debe ser la que seleccionó al registrarse</string>
+    <string name="reset_apass_tittle">Ingrese su respuesta</string>
+    <string name="reset_apass_hint">Respuesta</string>
+    <string name="reset_newpass_tittle">Escriba su nueva contraseña</string>
+    <string name="reset_newpass_hint">Contraseña nueva</string>
+    <string name="reset_pass_tittle">Restablecer contraseña</string>
+    <string name="warning_reset_msg1">No has ingresado un correo</string>
+    <string name="warning_reset_msg2">No has ingresado una respuesta</string>
+    <string name="warning_reset_msg3">No has ingresado una nueva contraseña</string>
+    <string name="warning_reset_msg4">No has ingresado tu pregunta de seguridad</string>
+    <!--Registry-->
+    <string name="registro_titulo">Registro</string>
+    <string name="registro_nombre_hint">Nombre</string>
+    <string name="registro_apellido_hint">Apellido</string>
+    <string name="registro_telefono_hint">Telefono</string>
+    <string name="registro_correo_hint">Correo Electronico</string>
+    <string name="registro_fecha_hint">Fecha de Nacimiento</string>
+    <string name="registro_pregunta_subtittle">Pregunta de Seguridad</string>
+    <string name="registro_respuesta_hint">Respuesta de Seguridad</string>
+    <string name="registro_contrasenia_hint">Contraseña</string>
+    <string name="registro_contrasenia2_hint">Repetir Contraseña</string>
+    <string name="registro_btn_name">Registrar</string>
+    <string name="warning_registro_msg1">No ha seleccionado una pregunta de seguridad</string>
+    <string name="warning_registro_msg2">No coinciden las contraseñas</string>
+    <string name="warning_registro_msg3">No has ingresado el nombre correctamente</string>
+    <string name="warning_registro_msg4">No has ingresado el apellido correctamente</string>
+    <string name="warning_registro_msg5">No has ingresado el telefono correctamente</string>
+    <string name="warning_registro_msg6">El correo ingresado no es correcto</string>
+    <string name="warning_registro_msg7">La fecha de nacimiento ingresada no es correcta</string>
+    <string name="warning_registro_msg8">No has ingresado la contraseña correctaemnet</string>
+  
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Cerrar</string>
     <string name="Home">Home</string>
@@ -14,4 +53,10 @@
     <string name="detalle">Ver más</string>
     <string name="categorias">Categorias</string>
     <string name="search">Buscar producto por nombre</string>
+    <string name="Escribe_comentario">Deja aqui tu comentario ...</string>
+    <string name="Enviar_Comentario">Enviar Comentario</string>
+    <string name="Title_Comment">Comentario</string>
+    <string name="Comentario_item">Comentario:</string>
+    <string name="Score_item">Score:</string>
+    <string name="Magnitud_item">Intensidad:</string>
 </resources>

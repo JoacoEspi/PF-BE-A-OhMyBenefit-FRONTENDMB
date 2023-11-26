@@ -5,6 +5,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     id ("androidx.navigation.safeargs.kotlin")
+   // id("org.jetbrains.kotlin.jvm")
+
 }
 
 android {
@@ -39,6 +41,7 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 }
 
@@ -51,6 +54,10 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //para inicializar shared preferences
+    //implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
+    //implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.21")
 
     // Fragment
     implementation("androidx.fragment:fragment-ktx:1.5.7")

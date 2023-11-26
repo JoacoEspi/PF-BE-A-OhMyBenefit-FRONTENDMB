@@ -1,5 +1,7 @@
 package com.example.ohmybenefits.core
 
+
+
 import okhttp3.Interceptor
 import okhttp3.Response
 object InterceptorCustom : Interceptor {
@@ -10,10 +12,10 @@ object InterceptorCustom : Interceptor {
         request = request.newBuilder()
             .header("Accept", "application/json")
             .header("Content-Type", "application/json")
+            //.header("Authorization", preferences.obtenerToken())
             .build()
 
         return chain.proceed(request)
     }
-
 
 }

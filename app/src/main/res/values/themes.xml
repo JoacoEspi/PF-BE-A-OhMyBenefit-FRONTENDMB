@@ -4,7 +4,17 @@
         <item name="android:fontFamily">@font/libre_franklin_thin</item>
         <item name="android:background">@drawable/rounded_background</item>
         <item name="strokeColor">@color/pink</item>
+      
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/pink</item>
+        <item name="colorPrimaryDark">@color/dark_hot_pink</item>
+        <item name="colorAccent">@color/green</item>
     </style>
+
+    <style name="Base.Widget.AppCompat.Button.Pink" parent="Base.Theme.OhMyBenefits">
+        <item name="buttonStyle">@drawable/hotpink_button</item>
+    </style>
+
 
     <style name="Theme.OhMyBenefits" parent="Base.Theme.OhMyBenefits" />
 
