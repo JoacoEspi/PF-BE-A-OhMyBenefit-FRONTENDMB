@@ -9,7 +9,6 @@ class OhMyBenefitsApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        //Config.baseUrl = resources.getString(R.string.base_url)
-        Config.baseUrl = resources.getString(R.string.clara_base_url)
+        Config.baseUrl = resources.getString(R.string.base_url)
     }
 }

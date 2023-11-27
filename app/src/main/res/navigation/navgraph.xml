@@ -47,13 +47,18 @@
         <action
             android:id="@+id/action_iniciarSesion_to_registroFragment"
             app:destination="@id/registroFragment"
-            />
+            app:popUpTo="@id/registroFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_iniciarSesion_to_restaurarContraseniaFragment"
-            app:destination="@id/restaurarContraseniaFragment" />
+            app:destination="@id/restaurarContraseniaFragment"
+            app:popUpTo="@id/restaurarContraseniaFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_iniciarSesion_to_home"
-            app:destination="@id/home" />
+            app:destination="@id/home"
+            app:popUpTo="@id/home"
+            app:popUpToInclusive="true"/>
     </fragment>
   
     <fragment
@@ -63,7 +68,9 @@
         tools:layout="@layout/fragment_registro" >
         <action
             android:id="@+id/action_registroFragment_to_iniciarSesion"
-            app:destination="@id/iniciarSesion" />
+            app:destination="@id/iniciarSesion"
+            app:popUpTo="@id/iniciarSesion"
+            app:popUpToInclusive="true"/>
     </fragment>
   
     <fragment
@@ -73,7 +80,9 @@
         tools:layout="@layout/fragment_restaurar_contrasenia" >
         <action
             android:id="@+id/action_restaurarContraseniaFragment_to_iniciarSesion"
-            app:destination="@id/iniciarSesion" />
+            app:destination="@id/iniciarSesion"
+            app:popUpTo="@id/iniciarSesion"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
