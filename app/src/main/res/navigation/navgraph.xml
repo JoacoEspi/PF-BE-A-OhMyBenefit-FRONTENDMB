@@ -46,7 +46,8 @@
         tools:layout="@layout/iniciar_sesion_fragment" >
         <action
             android:id="@+id/action_iniciarSesion_to_registroFragment"
-            app:destination="@id/registroFragment" />
+            app:destination="@id/registroFragment"
+            />
         <action
             android:id="@+id/action_iniciarSesion_to_restaurarContraseniaFragment"
             app:destination="@id/restaurarContraseniaFragment" />

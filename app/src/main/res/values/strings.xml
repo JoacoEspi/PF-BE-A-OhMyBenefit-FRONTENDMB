@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">OhMyBenefits</string>
     <string name="base_url">http://10.0.2.2:8080</string>
+    <string name="clara_base_url">http://192.168.100.8:8080</string> <!--NO SUBIR-->
     <!--Login-->
     <string name="login_tittle">Login</string>
     <string name="forget_pass_msg"><u>He olvidado mi contraseña</u></string>
