@@ -51,11 +51,13 @@ La aplicación mobile se ha diseñado con flexibilidad para adaptarse a una vari
 Seguimiento de alza de precios.
 La aplicación proporciona una interfaz intuitiva, permitiendo a los usuarios organizar y realizar un seguimiento eficiente de sus compras. Con funciones como la obtencion de promociones via mail , busqueda personalizada, ubicacion de comecios cercanos, entre otros.
 
+
 Control de Promociones.
 Ideal para usuarios que se interesan en un seguimiento via correo electronico  de las promociones de sus comercios adyacentes.
 
 Geolocalizacion Custom.
 Con herramientas integradas como la geolocalizacion que permite al usuario desde cualquier ubicacion tener acceso a la informacion de comercios.
+
 
 Estos son solo algunos ejemplos, y la versatilidad de la aplicación permite adaptarse a diversas necesidades.
 
