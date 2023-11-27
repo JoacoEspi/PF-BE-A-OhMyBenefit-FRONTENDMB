@@ -1,9 +1,11 @@
 package com.example.ohmybenefits.data.network.services
+
+import com.example.ohmybenefits.data.model.ComentarioModel
+import com.example.ohmybenefits.data.model.PresupuestoModel
 import com.example.ohmybenefits.data.model.ResetContrasenia
 import com.example.ohmybenefits.data.model.UsuarioApiResponse
 import com.example.ohmybenefits.data.model.UsuarioModel
 import com.example.ohmybenefits.data.network.interfaces.UsuarioApiClient
-import com.example.ohmybenefits.data.model.ComentarioModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
@@ -37,6 +39,11 @@ class UsuarioService @Inject constructor(
     suspend fun postComment(comment: ComentarioModel): Response<ComentarioModel> {
         return withContext(Dispatchers.IO){
             apiClient.postComment(comment)
+        }
+    }
+    suspend fun guardarPresupuesto(presupuesto: PresupuestoModel): Response<Unit> {
+        return withContext(Dispatchers.IO) {
+            apiClient.guardarPresupuesto(presupuesto)
         }
     }
 }

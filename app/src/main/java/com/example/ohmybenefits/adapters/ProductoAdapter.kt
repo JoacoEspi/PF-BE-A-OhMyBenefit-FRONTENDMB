@@ -6,17 +6,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
+import com.example.ohmybenefits.data.model.Producto
 import com.example.ohmybenefits.data.model.ProductoModel
 import com.example.ohmybenefits.ui.fragments.HomeFragmentDirections
+import com.example.ohmybenefits.ui.viewmodel.PresupuestoViewModel
 import com.squareup.picasso.Picasso
 
 class ProductoAdapter(
-    private val navController: NavController
+    private val navController: NavController,
+    private val presupuestoViewModel: PresupuestoViewModel
 ) : RecyclerView.Adapter<ProductoAdapter.ProductoViewHolder>() {
-
     var productList: List<ProductoModel> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
@@ -45,6 +48,7 @@ class ProductoAdapter(
         private val precio: TextView = itemView.findViewById(R.id.precio)
         private val productImage: ImageView = itemView.findViewById(R.id.image_prod)
         private val detalle: Button = itemView.findViewById(R.id.detalle)
+        private val agregar: Button = itemView.findViewById(R.id.agregar)
 
         fun bind(producto: ProductoModel) {
             val precioSigno = "$" + producto.precio
@@ -59,6 +63,23 @@ class ProductoAdapter(
                 val action = HomeFragmentDirections.actionHomeToDetalle(producto._id, "653eebee4162199cc1f81006")
                 navController.navigate(action)
             }
+            agregar.setOnClickListener {
+                val productoModel = producto
+                val producto = productoModel.toProducto()
+                presupuestoViewModel.agregarProducto(producto, 1)
+            }
+        }
+        fun ProductoModel.toProducto(): Producto {
+            return Producto(
+                _id,
+                codigo.toLong(),
+                nombre,
+                precio,
+                ArrayList(categorias),
+                imageUrl,
+                idComercio,
+                0
+            )
         }
     }
 }

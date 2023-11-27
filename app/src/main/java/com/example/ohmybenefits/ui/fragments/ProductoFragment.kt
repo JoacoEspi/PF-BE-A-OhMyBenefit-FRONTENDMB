@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ohmybenefits.R
 import com.example.ohmybenefits.adapters.ProductoAdapter
+import com.example.ohmybenefits.ui.viewmodel.PresupuestoViewModel
 import com.example.ohmybenefits.ui.viewmodel.ProductoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,6 +22,7 @@ class ProductoFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var productoAdapter: ProductoAdapter
     private val productoViewModel: ProductoViewModel by activityViewModels()
+    private val presupuestoViewModel: PresupuestoViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +32,7 @@ class ProductoFragment : Fragment() {
         Log.d("ProductoFragment", "onCreateView")
 
         productoViewModel.listarProductos()
-        productoAdapter = ProductoAdapter(findNavController())
+        productoAdapter = ProductoAdapter(findNavController(), presupuestoViewModel)
 
         return inflater.inflate(R.layout.producto_fragment, container, false)
     }

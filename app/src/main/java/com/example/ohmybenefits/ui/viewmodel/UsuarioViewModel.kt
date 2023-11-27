@@ -1,10 +1,13 @@
 package com.example.ohmybenefits.ui.viewmodel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.ohmybenefits.core.InterceptorCustom
+import com.example.ohmybenefits.core.Preferences
 import com.example.ohmybenefits.data.model.ResetContrasenia
 import com.example.ohmybenefits.data.model.Seguridad
 import com.example.ohmybenefits.data.model.UsuarioApiResponse
@@ -22,7 +25,6 @@ class UsuarioViewModel @Inject constructor(
     private val registrarCase: RegistrarUsuarioUseCase,
     private val loginCase: LoginUsuarioUseCase,
     private val restaurarCase: RestaurarContraseniaUseCase
-
 )
 
     : ViewModel(){
@@ -48,7 +50,7 @@ class UsuarioViewModel @Inject constructor(
         val telefono: LiveData<String> = _telefono
 
         private val _mail = MutableLiveData<String>()
-        val mail: LiveData<String> = _mail
+        val mail: LiveData<String> get() = _mail
 
         private val _fechaNacimiento = MutableLiveData<String>()
         val fechaNacimiento: LiveData<String> = _fechaNacimiento
@@ -110,13 +112,15 @@ class UsuarioViewModel @Inject constructor(
         viewModelScope.launch {
 
                 val response = loginCase(usuario)
+
                 if(response.success) {
                     val data = response.data
                     if (data != null) {
                         setToken(data.token)
-                        usuario.mail?.let { setMail(it) }
+                        _mail.value = usuario.mail
                         response.message?.let { Log.d("Login?", it) }
                         Log.d("Token:", data.token)
+                        Log.d("Token:", _mail.value.toString())
                     }
                     response.message?.let { setSuccessMsg(it) }
                 } else {

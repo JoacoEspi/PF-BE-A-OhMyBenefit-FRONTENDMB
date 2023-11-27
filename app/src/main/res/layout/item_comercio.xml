@@ -15,17 +15,24 @@ android:padding="16dp">
 <TextView
     android:id="@+id/nombreComercio"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="15sp"
+    android:textColor="@color/turquoise"/>
 
 <TextView
     android:id="@+id/direccionComercio"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="15sp"/>
 
 <TextView
     android:id="@+id/distanciaComercio"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textSize="14sp"/>
 
 </LinearLayout>
 

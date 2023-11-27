@@ -1,7 +1,5 @@
 package com.example.ohmybenefits.core
 
-
-
 import okhttp3.Interceptor
 import okhttp3.Response
 object InterceptorCustom : Interceptor {

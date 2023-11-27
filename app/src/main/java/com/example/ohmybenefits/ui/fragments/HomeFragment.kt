@@ -20,6 +20,7 @@ import com.example.ohmybenefits.adapters.ProductoAdapter
 import com.example.ohmybenefits.data.enums.Categorias
 import com.example.ohmybenefits.data.model.CategoriaModel
 import com.example.ohmybenefits.data.network.services.ProductoService
+import com.example.ohmybenefits.ui.viewmodel.PresupuestoViewModel
 import com.example.ohmybenefits.ui.viewmodel.ProductoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -36,6 +37,7 @@ class HomeFragment : Fragment() {
     private lateinit var categoriasRecyclerView: RecyclerView
     private lateinit var searchView: SearchView
     private val productoViewModel: ProductoViewModel by activityViewModels()
+    private val presupuestoViewModel: PresupuestoViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -52,7 +54,7 @@ class HomeFragment : Fragment() {
         val manager = GridLayoutManager(context, 2)
         productoRecyclerView.layoutManager = manager
 
-        productoAdapter = ProductoAdapter(findNavController())
+        productoAdapter = ProductoAdapter(findNavController(), presupuestoViewModel)
         productoRecyclerView.adapter = productoAdapter
 
         val categoriasLayoutManager =

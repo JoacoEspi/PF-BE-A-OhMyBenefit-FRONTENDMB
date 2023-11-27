@@ -1,6 +1,7 @@
 package com.example.ohmybenefits.data.network.interfaces
 
 import com.example.ohmybenefits.data.model.ComentarioModel
+import com.example.ohmybenefits.data.model.PresupuestoModel
 import com.example.ohmybenefits.data.model.ResetContrasenia
 import com.example.ohmybenefits.data.model.UsuarioApiResponse
 import com.example.ohmybenefits.data.model.UsuarioModel
@@ -23,10 +24,13 @@ interface UsuarioApiClient {
 
     @POST("/user/forget-password")
     suspend fun restablecerContrasenia(@Body nuevosVal: ResetContrasenia) : Response<UsuarioApiResponse>
-    
+
      @POST("/user/analyze-sentiment")
     suspend fun postComment(@Body comment: ComentarioModel): Response<ComentarioModel>
 
     @GET("/user/analyze-sentiment/commentslistAll")
     suspend fun getComentarios(): Response<List<ComentarioModel>>
+
+    @POST("/user/estimate-cart-price")
+    suspend fun guardarPresupuesto(@Body presupuesto: PresupuestoModel): Response<Unit>
 }

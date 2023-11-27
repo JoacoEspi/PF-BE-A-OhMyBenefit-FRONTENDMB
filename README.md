@@ -49,7 +49,8 @@ Sync Now
 La aplicación mobile se ha diseñado con flexibilidad para adaptarse a una variedad de casos de uso. A continuación, se presentan algunos ejemplos de situaciones en las que la aplicación puede ser beneficiosa:
 
 Seguimiento de alza de precios.
-La aplicación proporciona una interfaz intuitiva, permitiendo a los usuarios organizar y realizar un seguimiento eficiente de sus compras. Con funciones como la obtencion de promociones via mail , busqueda personalizada, ubicacion de comecios cercanos, entre otros. 
+La aplicación proporciona una interfaz intuitiva, permitiendo a los usuarios organizar y realizar un seguimiento eficiente de sus compras. Con funciones como la obtencion de promociones via mail , busqueda personalizada, ubicacion de comecios cercanos, entre otros.
+
 
 Control de Promociones.
 Ideal para usuarios que se interesan en un seguimiento via correo electronico  de las promociones de sus comercios adyacentes.
@@ -57,11 +58,12 @@ Ideal para usuarios que se interesan en un seguimiento via correo electronico  d
 Geolocalizacion Custom.
 Con herramientas integradas como la geolocalizacion que permite al usuario desde cualquier ubicacion tener acceso a la informacion de comercios.
 
-Estos son solo algunos ejemplos, y la versatilidad de la aplicación permite adaptarse a diversas necesidades. 
+
+Estos son solo algunos ejemplos, y la versatilidad de la aplicación permite adaptarse a diversas necesidades.
 
 ## Integrantes.
 #### Coordinacion B - Belgrano
-Alarcon, Clara 
+Alarcon, Clara
 Barbosa, Melisa Sol
 Espineira, Joaquin  
 Fontana, Corina

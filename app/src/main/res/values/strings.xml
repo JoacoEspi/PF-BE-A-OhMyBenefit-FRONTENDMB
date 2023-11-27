@@ -59,4 +59,22 @@
     <string name="Comentario_item">Comentario:</string>
     <string name="Score_item">Score:</string>
     <string name="Magnitud_item">Intensidad:</string>
+    <string name="Ubicacion_dispositivo">Utilice la ubicación de su dispositivo:</string>
+    <string name="Ubicacion_titulo">Obtener ubicación</string>
+    <string name="Ubicacion_boton_obtener">Cargar ubicación</string>
+    <string name="Ubicacion_ingreseTexto">O ingrese una dirección para utilizar en la búsqueda</string>
+    <string name="Ubicacion_hint">Ingrese la dirección</string>
+    <string name="Ubicacion_send">Enviar</string>
+    <string name="Prod_nom">Nombre del Producto</string>
+    <string name="Prod_price">Precio Unitario: $0.00</string>
+    <string name="Prod_cant">Cantidad: </string>
+    <string name="Botton_add_prod">Agregar</string>
+    <string name="Botton_add_cant">Cantidad</string>
+    <string name="Botton_goto_geo">Comercios</string>
+    <string name="Prod_priceTotal">Precio Total: $X</string>
+    <string name="Prod_comercio">Comercio: </string>
+    <string name="Presupuesto_Titulo">Productos seleccionados</string>
+    <string name="Presupuesto_Total">Total: $</string>
+    <string name="Botton_Presupuesto_guardar">Guardar presupuesto</string>
+    <string name="Botton_Presupuesto_borrar">Limpiar presupuesto</string>
 </resources>

@@ -162,7 +162,7 @@
                 android:layout_width="179dp"
                 android:layout_height="48dp"
                 android:elevation="15dp"
-                android:background="@drawable/hotpink_button"
+                android:backgroundTint="@color/turquoise"
                 android:text="Iniciar Sesión"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"

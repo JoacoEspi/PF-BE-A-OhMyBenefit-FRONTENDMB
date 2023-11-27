@@ -1,0 +1,44 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/rounded_edittext"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textNombreProductoPresupuesto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Prod_nom"
+        android:textColor="@color/turquoise"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textCantidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Prod_cant"/>
+
+    <TextView
+        android:id="@+id/textPrecioUnitario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Prod_price"/>
+
+    <TextView
+        android:id="@+id/textPrecioTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/Prod_priceTotal"/>
+
+    <TextView
+        android:id="@+id/textSuper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Prod_comercio"/>
+
+</LinearLayout>
