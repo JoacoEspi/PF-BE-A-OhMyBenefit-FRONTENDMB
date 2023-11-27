@@ -166,7 +166,7 @@
                 android:layout_width="343dp"
                 android:layout_height="51dp"
                 android:layout_marginTop="52dp"
-                android:background="@drawable/hotpink_button"
+                android:backgroundTint="@color/turquoise"
                 android:elevation="20dp"
                 android:text="Restablecer contraseña"
                 android:textSize="16sp"
