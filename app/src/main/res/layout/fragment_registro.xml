@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scrollViewRegistro"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        tools:context=".ui.fragments.RegistroFragment">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="364dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/registro_titulo"
+            android:textAlignment="center"
+            android:textColor="@color/pink"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline12"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline11" />
+
+        <EditText
+            android:id="@+id/registro_nombre_input"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:hint="@string/registro_nombre_hint"
+            android:inputType="text"
+            android:textColorHint="@color/green"
+            style="@style/round_pink_edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.022" />
+
+        <EditText
+            android:id="@+id/registro_apellido_input"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:hint="@string/registro_apellido_hint"
+            android:inputType="text"
+            android:textColorHint="@color/green"
+            style="@style/round_pink_edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.126" />
+
+        <EditText
+            android:id="@+id/registro_telefono_input"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:hint="@string/registro_telefono_hint"
+            android:inputType="text"
+            android:textColorHint="@color/green"
+            style="@style/round_pink_edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.234" />
+
+        <EditText
+            android:id="@+id/registro_correo_input"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:hint="@string/registro_correo_hint"
+            android:inputType="text"
+            android:textColorHint="@color/green"
+            style="@style/round_pink_edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.336" />
+
+
+        <EditText
+            android:id="@+id/registro_fecha_input"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:hint="@string/registro_fecha_hint"
+            android:inputType="datetime"
+            android:textColorHint="@color/green"
+            style="@style/round_pink_edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.441" />
+
+        <!--Preguntas de seguridad-->
+
+
+        <Spinner
+            android:id="@+id/registro_spinner_preguntas"
+            style="@style/round_pink_edit_text"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="252dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.54"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            tools:visibility="visible" />
+
+        <EditText
+            android:id="@+id/registro_respuesta_input"
+            style="@style/round_pink_edit_text"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:hint="@string/registro_respuesta_hint"
+            android:inputType="text"
+            android:textColorHint="@color/green"
+            app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toBottomOf="@+id/registro_spinner_preguntas" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="12dp"
+            android:hint="@string/registro_contrasenia_hint"
+            android:scrollbarSize="25dp"
+            android:textColorHint="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.72"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.755"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/green">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registro_contrasenia_input"
+                style="@style/round_pink_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="15"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="327dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="72dp"
+            android:hint="@string/registro_contrasenia2_hint"
+            android:scrollbarSize="25dp"
+            android:textColorHint="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/green">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registro_contrasenia2_input"
+                style="@style/round_pink_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="15"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/registro_boton"
+            android:layout_width="198dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="556dp"
+            android:backgroundTint="@color/turquoise"
+            android:elevation="15dp"
+            android:hint="@string/registro_btn_name"
+            android:textColorHint="@color/creamy_white"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline10"
+            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintStart_toStartOf="@+id/guideline11"
+            app:layout_constraintTop_toTopOf="@+id/guideline12"
+            app:layout_constraintVertical_bias="0.6" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="384dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="70dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

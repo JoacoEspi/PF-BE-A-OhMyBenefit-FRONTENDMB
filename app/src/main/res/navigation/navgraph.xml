@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.ohmybenefits.ui.fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_home_to_detalle"
+            app:destination="@id/detalleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/presupuesto"
+        android:name="com.example.ohmybenefits.ui.fragments.PresupuestoFragment"
+        android:label="presupuesto_fragment"
+        tools:layout="@layout/presupuesto_fragment" />
+
+    <fragment
+        android:id="@+id/comentario"
+        android:name="com.example.ohmybenefits.ui.fragments.ComentarioFragment"
+        android:label="comentario_fragment"
+        tools:layout="@layout/comentario_fragment" />
+
+    <fragment
+        android:id="@+id/configuracion"
+        android:name="com.example.ohmybenefits.ui.fragments.ConfiguracionFragment"
+        android:label="configuracion_fragment"
+        tools:layout="@layout/configuracion_fragment" />
+
+    <fragment
+        android:id="@+id/perfil"
+        android:name="com.example.ohmybenefits.ui.fragments.PerfilFragment"
+        android:label="perfil_fragment"
+        tools:layout="@layout/perfil_fragment" />
+
+    <fragment
+        android:id="@+id/iniciarSesion"
+        android:name="com.example.ohmybenefits.ui.fragments.IniciarSesionFragment"
+        android:label="iniciar_sesion_fragment"
+        tools:layout="@layout/iniciar_sesion_fragment" >
+        <action
+            android:id="@+id/action_iniciarSesion_to_registroFragment"
+            app:destination="@id/registroFragment"
+            app:popUpTo="@id/registroFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_iniciarSesion_to_restaurarContraseniaFragment"
+            app:destination="@id/restaurarContraseniaFragment"
+            app:popUpTo="@id/restaurarContraseniaFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_iniciarSesion_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@id/home"
+            app:popUpToInclusive="true"/>
+    </fragment>
+  
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.RegistroFragment"
+        android:label="fragment_registro"
+        tools:layout="@layout/fragment_registro" >
+        <action
+            android:id="@+id/action_registroFragment_to_iniciarSesion"
+            app:destination="@id/iniciarSesion"
+            app:popUpTo="@id/iniciarSesion"
+            app:popUpToInclusive="true"/>
+    </fragment>
+  
+    <fragment
+        android:id="@+id/restaurarContraseniaFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.RestaurarContraseniaFragment"
+        android:label="fragment_restaurar_contrasenia"
+        tools:layout="@layout/fragment_restaurar_contrasenia" >
+        <action
+            android:id="@+id/action_restaurarContraseniaFragment_to_iniciarSesion"
+            app:destination="@id/iniciarSesion"
+            app:popUpTo="@id/iniciarSesion"
+            app:popUpToInclusive="true"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.DetalleFragment"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" >
+        <action
+            android:id="@+id/action_detalleFragment_to_comerciosFragment"
+            app:destination="@id/comerciosFragment" />
+        <action
+            android:id="@+id/action_detalleFragment_self"
+            app:destination="@id/detalleFragment"
+            app:popUpTo="@id/detalleFragment"
+            app:popUpToInclusive="true" />
+        <argument android:name="producto"
+            app:argType="string" />
+        <argument
+            android:name="usuario"
+            app:argType="string" />
+    </fragment>
+  
+    <fragment
+        android:id="@+id/comerciosFragment"
+        android:name="com.example.ohmybenefits.ui.fragments.ComerciosFragment"
+        android:label="ComerciosFragment" />
+</navigation>
