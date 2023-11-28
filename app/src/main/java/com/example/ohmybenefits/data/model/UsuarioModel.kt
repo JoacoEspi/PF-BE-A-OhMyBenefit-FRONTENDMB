@@ -23,5 +23,9 @@ data class ResetContrasenia(
     val seguridad: Seguridad
 )
 
+data class UsuarioLoginModel(
+    val mail: String,
+    val contrasenia: String
+)
 
 

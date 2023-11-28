@@ -41,11 +41,11 @@ class RestaurarContraseniaFragment : Fragment() {
         val navController = findNavController()
         val spinner = binding.spinnerQuestions
         val emailInput = binding.resetPassEmailInput
-        val respuestaInput =binding.resetPassAnsInput
+        val respuestaInput = binding.resetPassAnsInput
         val contraseniaInput = binding.resetNewPassInput
         val btnReset = binding.resetPassButton
 
-        if(spinner != null){
+        if (spinner != null) {
             ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.preguntas_seguridad,
@@ -56,12 +56,11 @@ class RestaurarContraseniaFragment : Fragment() {
             }
         }
 
-
         btnReset.setOnClickListener {
             val email = emailInput.text.toString()
             val respuesta = respuestaInput.text.toString()
             val contrasenia = contraseniaInput.text.toString()
-            var pregunta : String
+            var pregunta: String
 
             spinner.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
@@ -72,50 +71,50 @@ class RestaurarContraseniaFragment : Fragment() {
                     position: Int,
                     id: Long
                 ) {
-                   pregunta = parent?.getItemAtPosition(position).toString()
+                    pregunta = parent?.getItemAtPosition(position).toString()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
-
                 }
             }
 
             pregunta = binding.spinnerQuestions.selectedItem.toString()
 
-            if(email.isNotEmpty() && respuesta.isNotEmpty() && contrasenia.isNotEmpty() && pregunta != getString(R.string.registro_pregunta_subtittle)){
-                try{
-                    usuarioViewModel.resetearContrasenia(email, pregunta ,respuesta,contrasenia)
+            if (email.isNotEmpty() && respuesta.isNotEmpty() && contrasenia.isNotEmpty() && pregunta != getString(
+                    R.string.registro_pregunta_subtittle
+                )
+            ) {
+                try {
+                    usuarioViewModel.resetearContrasenia(email, pregunta, respuesta, contrasenia)
                     showSuccessDialog("Has podido restablecer tu contraseña, recuerda iniciar sesion")
                     Log.d("resultado reset:", usuarioViewModel.successMessage)
 
-                    val action = RestaurarContraseniaFragmentDirections.actionRestaurarContraseniaFragmentToIniciarSesion()
+                    val action =
+                        RestaurarContraseniaFragmentDirections.actionRestaurarContraseniaFragmentToIniciarSesion()
                     navController.navigate(action)
-                }catch(e: Exception){
+                } catch (e: Exception) {
                     showAlertDialog("Cuidado ${e.message.toString()}")
                 }
 
-            } else if(email.isEmpty()){
+            } else if (email.isEmpty()) {
                 showAlertDialog(getString(R.string.warning_reset_msg1))
-            } else if(respuesta.isEmpty()){
+            } else if (respuesta.isEmpty()) {
                 showAlertDialog(getString(R.string.warning_reset_msg2))
-            } else if(contrasenia.isEmpty()){
+            } else if (contrasenia.isEmpty()) {
                 showAlertDialog(getString(R.string.warning_reset_msg3))
-            } else if(pregunta == getString(R.string.registro_pregunta_subtittle)){
+            } else if (pregunta == getString(R.string.registro_pregunta_subtittle)) {
                 showAlertDialog(getString(R.string.warning_reset_msg4))
             }
-
-
-
         }
-
     }
 
     private fun showAlertDialog(msg: String) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Hay un problema")
             .setMessage(msg)
-            .setPositiveButton("Ok"){dialog, id ->
-                Toast.makeText(requireContext(), "Eso es! sigue intentandolo", Toast.LENGTH_SHORT).show()
+            .setPositiveButton("Ok") { dialog, id ->
+                Toast.makeText(requireContext(), "Eso es! sigue intentandolo", Toast.LENGTH_SHORT)
+                    .show()
             }
         val dialog: AlertDialog = builder.create()
         dialog.show()
@@ -125,11 +124,10 @@ class RestaurarContraseniaFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder
             .setMessage(msg)
-            .setPositiveButton("Ok"){dialog, id ->
+            .setPositiveButton("Ok") { dialog, id ->
                 Toast.makeText(requireContext(), "Eso es!", Toast.LENGTH_SHORT).show()
             }
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
-
 }

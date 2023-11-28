@@ -30,7 +30,6 @@ class Preferences(val context: Context) {
         return storage.getString(SHARED_USER_TOKEN, "")!!
     }
 
-
     fun limpiar() {
         storage.edit().clear()
     }

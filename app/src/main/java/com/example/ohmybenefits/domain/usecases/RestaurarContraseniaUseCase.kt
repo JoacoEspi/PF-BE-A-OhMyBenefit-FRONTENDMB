@@ -9,7 +9,7 @@ class RestaurarContraseniaUseCase @Inject constructor(
     private val repositorio: UsuarioRepository
 ) {
     suspend operator fun invoke(nuevosVal : ResetContrasenia) : UsuarioResponse {
-        return repositorio.restaurarcontrasenia(nuevosVal)
+        return repositorio.restaurarContrasenia(nuevosVal)
     }
 
 }

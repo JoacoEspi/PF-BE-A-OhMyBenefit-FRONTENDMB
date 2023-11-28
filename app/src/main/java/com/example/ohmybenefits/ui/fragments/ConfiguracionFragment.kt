@@ -10,7 +10,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ConfiguracionFragment() : Fragment(R.layout.configuracion_fragment){
+class ConfiguracionFragment : Fragment(R.layout.configuracion_fragment) {
 
     private lateinit var switchDarkMode: SwitchMaterial
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
