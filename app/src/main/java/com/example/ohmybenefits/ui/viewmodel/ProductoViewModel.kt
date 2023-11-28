@@ -77,7 +77,6 @@ class ProductoViewModel @Inject constructor(private val productService: Producto
     }
 
     fun buscarPalabra(palabra: String) {
-
         viewModelScope.launch {
             setIsLoading(true)
             try {

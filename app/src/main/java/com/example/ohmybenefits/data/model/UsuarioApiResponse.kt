@@ -10,5 +10,5 @@ data class UsuarioApiResponse(
 )
 
 data class Data(
-    val token: String
+    val token: String?
 )

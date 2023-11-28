@@ -47,7 +47,7 @@ class RegistroFragment : Fragment() {
         val contConfirmacionInput = binding.registroContrasenia2Input
         val respuestaInput = binding.registroRespuestaInput
 
-        if(spinner != null) {
+        if (spinner != null) {
             ArrayAdapter.createFromResource(
                 requireContext(),
                 R.array.preguntas_seguridad,
@@ -59,7 +59,7 @@ class RegistroFragment : Fragment() {
         }
 
 
-        registroBtn.setOnClickListener{
+        registroBtn.setOnClickListener {
             val nombre = nombreInput.text.toString()
             val apellido = apellidoInput.text.toString()
             val telefono = telefonoInput.text.toString()
@@ -80,7 +80,7 @@ class RegistroFragment : Fragment() {
                     id: Long
                 ) {
 
-                   val pregunta = parent?.getItemAtPosition(position).toString()
+                    val pregunta = parent?.getItemAtPosition(position).toString()
                     Log.d("Resultado spinner registro", pregunta)
 
                 }
@@ -91,32 +91,41 @@ class RegistroFragment : Fragment() {
             }
 
             val preguntaInput = binding.registroSpinnerPreguntas.selectedItem.toString()
-            if(preguntaInput == getString(R.string.registro_pregunta_subtittle)){
+            if (preguntaInput == getString(R.string.registro_pregunta_subtittle)) {
                 showAlertDialog(getString(R.string.warning_registro_msg1))
-            } else if (contrasenia != confirmacionCont){
+            } else if (contrasenia != confirmacionCont) {
                 showAlertDialog(getString(R.string.warning_registro_msg2))
-            } else if(nombre.isNullOrEmpty()){
+            } else if (nombre.isNullOrEmpty()) {
                 showAlertDialog(getString(R.string.warning_registro_msg3))
-            } else if(apellido.isNullOrEmpty()){
+            } else if (apellido.isNullOrEmpty()) {
                 showAlertDialog(getString(R.string.warning_registro_msg4))
-            } else if(telefono.isNullOrEmpty() || telefono.length > 10 || telefono.length < 10){
+            } else if (telefono.isNullOrEmpty() || telefono.length > 10 || telefono.length < 10) {
                 showAlertDialog(getString(R.string.warning_registro_msg5))
-            } else if(mail.isNullOrEmpty()){
+            } else if (mail.isNullOrEmpty()) {
                 showAlertDialog(getString(R.string.warning_registro_msg6))
-            } else if(fecha.isNullOrEmpty()) {
+            } else if (fecha.isNullOrEmpty()) {
                 showAlertDialog(getString(R.string.warning_registro_msg7))
-            } else if(contrasenia.isNullOrEmpty()){
+            } else if (contrasenia.isNullOrEmpty()) {
                 showAlertDialog(getString(R.string.warning_registro_msg8))
-            }else {
+            } else {
                 try {
-                    usuarioViewModel.registrarUsuario(nombre, apellido, telefono, mail, fecha, contrasenia, preguntaInput, respuesta)
+                    usuarioViewModel.registrarUsuario(
+                        nombre,
+                        apellido,
+                        telefono,
+                        mail,
+                        fecha,
+                        contrasenia,
+                        preguntaInput,
+                        respuesta
+                    )
                     Log.d("Resultado desde fragment registro", usuarioViewModel.successMessage)
 
                     showSuccessDialog("Usuario creado con exito, recuerda iniciar sesion nuevamente")
 
                     val action = RegistroFragmentDirections.actionRegistroFragmentToIniciarSesion()
                     navController.navigate(action)
-                } catch(e: Exception){
+                } catch (e: Exception) {
                     showAlertDialog("Cuidado ${e.message.toString()}")
                 }
 
@@ -124,12 +133,13 @@ class RegistroFragment : Fragment() {
         }
     }
 
-   private fun showAlertDialog(msg: String) {
+    private fun showAlertDialog(msg: String) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Hay un problema")
             .setMessage(msg)
-            .setPositiveButton("Ok"){dialog, id ->
-                Toast.makeText(requireContext(), "Eso es! sigue intentandolo", Toast.LENGTH_SHORT).show()
+            .setPositiveButton("Ok") { dialog, id ->
+                Toast.makeText(requireContext(), "Eso es! sigue intentandolo", Toast.LENGTH_SHORT)
+                    .show()
             }
         val dialog: AlertDialog = builder.create()
         dialog.show()
@@ -139,7 +149,7 @@ class RegistroFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder
             .setMessage(msg)
-            .setPositiveButton("Ok"){dialog, id ->
+            .setPositiveButton("Ok") { dialog, id ->
                 Toast.makeText(requireContext(), "Eso es!", Toast.LENGTH_SHORT).show()
             }
         val dialog: AlertDialog = builder.create()

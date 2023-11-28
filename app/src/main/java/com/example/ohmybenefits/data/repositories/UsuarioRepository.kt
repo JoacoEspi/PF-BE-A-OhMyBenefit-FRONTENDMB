@@ -17,15 +17,8 @@ class UsuarioRepository @Inject constructor(
         return response.toDomain()
     }
 
-    suspend fun logearUsuario(usuario: UsuarioModel): UsuarioResponse {
-        val response: UsuarioApiResponse = service.loginUsuario(usuario)
-        return response.toDomain()
-    }
-
-    suspend fun restaurarcontrasenia(nuevosVal: ResetContrasenia) : UsuarioResponse {
+    suspend fun restaurarContrasenia(nuevosVal: ResetContrasenia) : UsuarioResponse {
         val response: UsuarioApiResponse = service.restaurarContrasenia(nuevosVal)
         return response.toDomain()
     }
-
-
 }

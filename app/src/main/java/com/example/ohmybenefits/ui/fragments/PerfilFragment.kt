@@ -9,7 +9,7 @@ import com.example.ohmybenefits.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PerfilFragment(): Fragment(){
+class PerfilFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,5 +18,4 @@ class PerfilFragment(): Fragment(){
     ): View? {
         return inflater.inflate(R.layout.perfil_fragment, container, false)
     }
-
 }

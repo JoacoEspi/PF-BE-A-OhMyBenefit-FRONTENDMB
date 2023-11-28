@@ -1,7 +1,7 @@
 package com.example.ohmybenefits.di
 
 import com.example.ohmybenefits.core.Config
-import com.example.ohmybenefits.core.InterceptorCustom
+import com.example.ohmybenefits.core.HeaderInterceptor
 import com.example.ohmybenefits.data.network.interfaces.ProductoApiClient
 import com.example.ohmybenefits.data.network.interfaces.UsuarioApiClient
 import dagger.Module
@@ -18,7 +18,7 @@ import javax.inject.Singleton
 object NetworkModule {
 
     private var client: OkHttpClient = OkHttpClient.Builder().apply {
-        addInterceptor(InterceptorCustom)
+        addInterceptor(HeaderInterceptor())
     }.build()
 
     @Singleton

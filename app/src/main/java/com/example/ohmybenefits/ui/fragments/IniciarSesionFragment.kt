@@ -9,15 +9,17 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.ohmybenefits.R
 import com.example.ohmybenefits.databinding.IniciarSesionFragmentBinding
 import com.example.ohmybenefits.ui.viewmodel.UsuarioViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class IniciarSesionFragment(): Fragment(){
+class IniciarSesionFragment : Fragment() {
 
     private lateinit var binding: IniciarSesionFragmentBinding
     private val usuarioViewModel: UsuarioViewModel by activityViewModels()
@@ -32,7 +34,8 @@ class IniciarSesionFragment(): Fragment(){
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState
+        super.onViewCreated(
+            view, savedInstanceState
         )
         val navController = findNavController()
         val emailInput = binding.emailAddressInput
@@ -40,61 +43,58 @@ class IniciarSesionFragment(): Fragment(){
         val loginBtn = binding.loginButton
 
 
-       if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             navController.popBackStack(R.id.iniciarSesion, false)
         }
 
         val linkRecuperarCont = binding.forgotPassLink
         val linkRegistro = binding.registryLink
 
-        linkRegistro.setOnClickListener{
+        linkRegistro.setOnClickListener {
             val action = IniciarSesionFragmentDirections.actionIniciarSesionToRegistroFragment()
             navController.navigate(action)
         }
 
-        linkRecuperarCont.setOnClickListener{
-            val action = IniciarSesionFragmentDirections.actionIniciarSesionToRestaurarContraseniaFragment()
+        linkRecuperarCont.setOnClickListener {
+            val action =
+                IniciarSesionFragmentDirections.actionIniciarSesionToRestaurarContraseniaFragment()
             navController.navigate(action)
 
         }
 
-        loginBtn.setOnClickListener{
-            val email = emailInput.text.toString()
-            val contrasenia = contraseniaInput.text.toString()
+        loginBtn.setOnClickListener {
+            lifecycleScope.launch {
+                val email = emailInput.text.toString()
+                val contrasenia = contraseniaInput.text.toString()
 
-            if(email.isNotEmpty() && contrasenia.isNotEmpty()) {
-
-                try{
-                    usuarioViewModel.loginUsuario(email, contrasenia)
-                    Log.d("Resultado desde fragment login",usuarioViewModel.successMessage)
-                    val action = IniciarSesionFragmentDirections.actionIniciarSesionToHome()
-                    navController.navigate(action)
-                } catch (e: Exception){
-                    showAlertDialog("Cuidado ${e.message.toString()}")
+                if (email.isNotEmpty() && contrasenia.isNotEmpty()) {
+                    try {
+                        usuarioViewModel.loginUsuario(email, contrasenia, requireContext())
+                        Log.d("Resultado desde fragment login", usuarioViewModel.successMessage)
+                        val action = IniciarSesionFragmentDirections.actionIniciarSesionToHome()
+                        navController.navigate(action)
+                    } catch (e: Exception) {
+                        showAlertDialog("Cuidado ${e.message.toString()}")
+                    }
+                } else if (email.isEmpty()) {
+                    showAlertDialog(getString(R.string.warning_email))
+                } else if (contrasenia.isEmpty()) {
+                    showAlertDialog(getString(R.string.warning_pass))
                 }
-
-            } else if(email.isEmpty()){
-                showAlertDialog(getString(R.string.warning_email))
-            } else if(contrasenia.isEmpty()){
-                showAlertDialog(getString(R.string.warning_pass))
             }
-
         }
-
-
     }
 
-    private fun showAlertDialog(message: String){
+    private fun showAlertDialog(message: String) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Error")
             .setMessage(message)
-            .setPositiveButton("Entendido"){ dialog, which ->
-                Toast.makeText(requireContext(), "Eso es! sigue intentandolo!", Toast.LENGTH_SHORT).show()
+            .setPositiveButton("Entendido") { dialog, which ->
+                Toast.makeText(requireContext(), "Eso es! sigue intentandolo!", Toast.LENGTH_SHORT)
+                    .show()
             }
         val alertDialog: AlertDialog = builder.create()
         alertDialog.show()
     }
-
-
 }
 
